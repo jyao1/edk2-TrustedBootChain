@@ -270,7 +270,7 @@
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 08:19:46]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 10:10:24]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -287,28 +287,26 @@
                                 
                                 <h2 id="figures">Figures</h2>
 <ul>
-<li><p><a href="2_Overview.html#figure-1-measurement-and-attestation">Figure 1 Measurement and Attestation</a></p>
-</li>
-<li><p>Figure 2</p>
-</li>
-<li>Figure 3</li>
-<li>Figure 4</li>
-<li>Figure 5</li>
-<li>Figure 6</li>
-<li>Figure 7</li>
-<li>Figure 8</li>
-<li>Figure 9</li>
-<li>Figure 10</li>
-<li>Figure 11</li>
-<li>Figure 12</li>
-<li>Figure 13</li>
-<li>Figure 14</li>
-<li>Figure 15</li>
-<li>Figure 16</li>
-<li>Figure 17</li>
-<li>Figure 18</li>
-<li>Figure 19</li>
-<li>Figure 20</li>
+<li><a href="2_Overview.html#figure-1-measurement-and-attestation">Figure 1 Measurement and Attestation</a></li>
+<li><a href="3_TCG_Trusted_Boot_Chain_in_EDKII.html#figure-2-high-level-components-and-measurements">Figure 2 High Level Components and Measuring</a></li>
+<li><a href="3_TCG_Trusted_Boot_Chain_in_EDKII.html#figure-3-high-level-module-flow">Figure 3 High Level Module Flow</a></li>
+<li><a href="3_TCG_Trusted_Boot_Chain_in_EDKII.html#figure-4-tcg-trusted-boot-flow">Figure 4 TCG Trusted Boot Flow</a></li>
+<li><a href="3_TCG_Trusted_Boot_Chain_in_EDKII.html#figure-5-remote-attestation-tpm-device-verification">Figure 5 Remote Attestation TPM Device Verification</a></li>
+<li><a href="3_TCG_Trusted_Boot_Chain_in_EDKII.html#figure-6-remote-attestation-event-log-verification">Figure 6 Remote Attestation Event Log Verification</a></li>
+<li><a href="3_TCG_Trusted_Boot_Chain_in_EDKII.html#figure-7-rim-validation">Figure 7 RIM Validation</a></li>
+<li><a href="3_TCG_Trusted_Boot_Chain_in_EDKII.html#figure-8-tcg-trusted-boot-component-in-edk-ii">Figure 8 TCG Trusted Boot Component in EDK II</a></li>
+<li><a href="3_TCG_Trusted_Boot_Chain_in_EDKII.html#figure-9-tpm-bank-selection-in-edk-ii">Figure 9 TPM Bank Selection in EDK II</a></li>
+<li><a href="3_TCG_Trusted_Boot_Chain_in_EDKII.html#figure-10-tcg-pp-component-in-edk-ii">Figure 10 TCG PP Component in EDK II</a></li>
+<li><a href="3_TCG_Trusted_Boot_Chain_in_EDKII.html#figure-11-tcg-mor-flow">Figure 11 TCG MOR Flow</a></li>
+<li><a href="3_TCG_Trusted_Boot_Chain_in_EDKII.html#figure-12-tcg-mor-component-in-edk-ii">Figure 12 TBD MOR Component in EDK II</a></li>
+<li><a href="3_TCG_Trusted_Boot_Chain_in_EDKII.html#figure-13-tcg-storage-component-in-edk-ii">Figure 13 TCG Storage Component in EDK II</a></li>
+<li><a href="5_Looking_Forward.html#figure-14-platform-root-of-trust">Figure 14 Platform Root of Trust</a></li>
+<li><a href="5_Looking_Forward.html#figure-15-dice-implicit-identity-based-attestation">Figure 15 Dice Implicit Identiy Based Attestation</a></li>
+<li><a href="5_Looking_Forward.html#figure-16-dice-symmetric-identity-based-attestation">Figure 16 Dice Symmetric Identity Based Attestation</a></li>
+<li><a href="5_Looking_Forward.html#figure-17-spdm-10">Figure 17 SPDM 1.0</a></li>
+<li><a href="5_Looking_Forward.html#figure-18-spdm-11">Figure 18 SPDM 1.1</a></li>
+<li><a href="5_Looking_Forward.html#figure-19-openspdm-design">Figure 19 Open SPDM Design</a></li>
+<li><a href="5_Looking_Forward.html#figure-20-an-open-trusted-platform">Figure 20 An Open Trusted Platform</a></li>
 </ul>
 
                                 
@@ -324,7 +322,7 @@
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 08:19:46]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 10:10:24]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -353,7 +351,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Figures","level":"1.3","depth":1,"next":{"title":"Executive Summary","level":"1.4","depth":1,"path":"1_Executive_Summary.md","ref":"1_Executive_Summary.md","articles":[]},"previous":{"title":"Tables","level":"1.2","depth":1,"path":"TABLES.md","ref":"TABLES.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"FIGURES.md","mtime":"2020-12-07T20:19:15.431Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T20:19:46.537Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Figures","level":"1.3","depth":1,"next":{"title":"Executive Summary","level":"1.4","depth":1,"path":"1_Executive_Summary.md","ref":"1_Executive_Summary.md","articles":[]},"previous":{"title":"Tables","level":"1.2","depth":1,"path":"TABLES.md","ref":"TABLES.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"FIGURES.md","mtime":"2020-12-07T22:09:50.828Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T22:10:24.175Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
