@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>1 First Chapter · GitBook</title>
+        <title>TCG Trusted Boot Chain in EDK II · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -59,8 +59,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="4_Other_Trusted_Boot_Chains.html" />
     
-    <link rel="prev" href="./" />
+    
+    <link rel="prev" href="2_Overview.html" />
     
 
     </head>
@@ -98,12 +100,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="chapter1.html">
+        <li class="chapter " data-level="1.2" data-path="TABLES.html">
             
-                <a href="chapter1.html#1-first-chapter">
+                <a href="TABLES.html">
             
                     
-                    1 First Chapter
+                    List of Tables
             
                 </a>
             
@@ -111,41 +113,118 @@
             
         </li>
     
-
-    
-        
-        <li class="divider"></li>
-        
-        
-    
-        <li class="chapter " data-level="2.1" >
+        <li class="chapter " data-level="1.3" data-path="FIGURES.html">
             
-                <span>
+                <a href="FIGURES.html">
             
                     
-                    Tables
+                    List of Figures
             
-                </span>
+                </a>
             
 
             
         </li>
     
-
-    
-        
-        <li class="divider"></li>
-        
-        
-    
-        <li class="chapter " data-level="3.1" >
+        <li class="chapter " data-level="1.4" data-path="1_Executive_Summary.html">
             
-                <span>
+                <a href="1_Executive_Summary.html">
             
                     
-                    Figures
+                    Executive Summary
             
-                </span>
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="2_Overview.html">
+            
+                <a href="2_Overview.html">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="3_TCG_Trusted_Boot_Chain_in_EDKII.html">
+            
+                <a href="3_TCG_Trusted_Boot_Chain_in_EDKII.html">
+            
+                    
+                    TCG Trusted Boot Chain in EDK II
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="4_Other_Trusted_Boot_Chains.html">
+            
+                <a href="4_Other_Trusted_Boot_Chains.html">
+            
+                    
+                    Other Trusted Boot Chains
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="5_Looking_Forward.html">
+            
+                <a href="5_Looking_Forward.html">
+            
+                    
+                    Looking Forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="6_Checklist_for_Platform_Developers.html">
+            
+                <a href="6_Checklist_for_Platform_Developers.html">
+            
+                    
+                    Checklist for Platform Developers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="7_Glossary.html">
+            
+                <a href="7_Glossary.html">
+            
+                    
+                    Glossary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="8_References.html">
+            
+                <a href="8_References.html">
+            
+                    
+                    References
+            
+                </a>
             
 
             
@@ -181,7 +260,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >1 First Chapter</a>
+        <a href="." >TCG Trusted Boot Chain in EDK II</a>
     </h1>
 </div>
 <div>
@@ -191,7 +270,7 @@
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/02/2020 10:55:54]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 06:05:14]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -236,200 +315,6 @@
   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -->
-<p><strong>Understanding the Trusted Boot Chain Implementation</strong></p>
-<p>Jiewen Yao</p>
-<p>Intel Corporation</p>
-<p>Vincent J. Zimmer</p>
-<p>Intel Corporation</p>
-<p><strong>November 2020</strong></p>
-<h1 id="executive-summary">Executive Summary</h1>
-<p>This document explains how to implement the Trusted Computing Group
-(TCG) static trusted boot chain, using the TianoCore EDK II project.</p>
-<p><strong>Prerequisite</strong></p>
-<p>This document assumes that the audience has basic firmware development
-experience using UEFI &amp; EDK II, along with basic knowledge of the UEFI
-boot flow, Trusted Platform Module (TPM) and cryptography.</p>
-<h1 id="table-of-contents .TOC-Heading">Table of Contents </h1>
-<p><a href="#overview">Overview 6</a></p>
-<p><a href="#tcg-trusted-boot-chain-in-edk-ii">TCG Trusted Boot Chain in EDK II 8</a></p>
-<p><a href="#trusted-boot-flow">Trusted Boot Flow 8</a></p>
-<p><a href="#pcr-measurement-and-attestation">PCR, Measurement, and Attestation 8</a></p>
-<p><a href="#general-guideline">General Guideline 8</a></p>
-<p><a href="#pcr-0">PCR 0 12</a></p>
-<p><a href="#pcr-1">PCR 1 15</a></p>
-<p><a href="#pcr-2">PCR 2 16</a></p>
-<p><a href="#pcr-3">PCR 3 16</a></p>
-<p><a href="#pcr-4">PCR 4 16</a></p>
-<p><a href="#pcr-5">PCR 5 17</a></p>
-<p><a href="#pcr-6">PCR 6 17</a></p>
-<p><a href="#pcr-7">PCR 7 17</a></p>
-<p><a href="#no_action-event">NO_ACTION event 18</a></p>
-<p><a href="#event-log">Event Log 18</a></p>
-<p><a href="#hardware-root-of-trust">Hardware Root of Trust 19</a></p>
-<p><a href="#trusted-boot-chain-putting-it-all-together">Trusted Boot Chain -- Putting it all together
-19</a></p>
-<p><a href="#remote-attestation">Remote Attestation 20</a></p>
-<p><a href="#tpm-device-startup">TPM Device Startup 23</a></p>
-<p><a href="#tpm-device-selection">TPM Device Selection 24</a></p>
-<p><a href="#tpm-device-interface">TPM Device Interface 24</a></p>
-<p><a href="#error-handling">Error Handling 25</a></p>
-<p><a href="#tcg-physical-presence">TCG Physical Presence 26</a></p>
-<p><a href="#tpm-bank-selection">TPM Bank Selection 27</a></p>
-<p><a href="#tpm-hierarchy-management">TPM Hierarchy Management 30</a></p>
-<p><a href="#tcg-memory-overwrite-mor">TCG Memory Overwrite (MOR) 31</a></p>
-<p><a href="#os-interface">OS Interface 33</a></p>
-<p><a href="#acpi-table">ACPI Table 33</a></p>
-<p><a href="#tcg2_protocol">TCG2_PROTOCOL 34</a></p>
-<p><a href="#tcg-storage">TCG Storage 35</a></p>
-<p><a href="#opal-password">OPAL Password 35</a></p>
-<p><a href="#opal-features">OPAL Features 37</a></p>
-<p><a href="#blocksid">BlockSid 38</a></p>
-<p><a href="#tper-reset">TPer reset 39</a></p>
-<p><a href="#other-trusted-boot-chains">Other Trusted Boot chains 40</a></p>
-<p><a href="#coreboot">coreboot 40</a></p>
-<p><a href="#grub2">Grub2 41</a></p>
-<p><a href="#linux-secure-boot-shim">Linux Secure Boot Shim 41</a></p>
-<p><a href="#windows-bitlocker">Windows BitLocker 42</a></p>
-<p><a href="#looking-forward">Looking Forward 43</a></p>
-<p><a href="#platform-root-of-trust---cerberus">Platform Root of Trust - Cerberus
-43</a></p>
-<p><a href="#device-root-of-trust---dice">Device Root of Trust - DICE 43</a></p>
-<p><a href="#server-management-domain-firmware">Server Management Domain Firmware
-45</a></p>
-<p><a href="#secure-communication-spdm">Secure communication -- SPDM 46</a></p>
-<p><a href="#an-open-trusted-platform-putting-it-all-together">An Open Trusted Platform -- Putting it all together
-47</a></p>
-<p><a href="#checklist-for-the-platform-developer">Checklist for the Platform Developer
-49</a></p>
-<p><a href="#pcr-measurement-and-attestation-1">PCR, Measurement and Attestation
-49</a></p>
-<p><a href="#general-guideline-1">General Guideline 49</a></p>
-<p><a href="#pcr-0-1">PCR 0 49</a></p>
-<p><a href="#pcr-1-1">PCR 1 49</a></p>
-<p><a href="#pcr-2-1">PCR 2 50</a></p>
-<p><a href="#pcr-3-1">PCR 3 50</a></p>
-<p><a href="#pcr-4-1">PCR 4 50</a></p>
-<p><a href="#pcr-5-1">PCR 5 50</a></p>
-<p><a href="#pcr-6-1">PCR 6 50</a></p>
-<p><a href="#pcr-7-1">PCR 7 50</a></p>
-<p><a href="#no_action-event-1">NO_ACTION event 51</a></p>
-<p><a href="#tpm-device-startup-1">TPM Device Startup 51</a></p>
-<p><a href="#device-selection">Device Selection 51</a></p>
-<p><a href="#tpm-device-interface-1">TPM Device Interface 51</a></p>
-<p><a href="#error-handling-1">Error Handling 51</a></p>
-<p><a href="#tcg-physical-presence-1">TCG Physical Presence 51</a></p>
-<p><a href="#tpm-bank-selection-1">TPM Bank Selection 51</a></p>
-<p><a href="#tpm-hierarchy-management-1">TPM Hierarchy Management 52</a></p>
-<p><a href="#tcg-memory-override">TCG Memory Override 52</a></p>
-<p><a href="#os-interface-1">OS Interface 52</a></p>
-<p><a href="#acpi-table-1">ACPI Table 52</a></p>
-<p><a href="#tcg2_protocol-1">TCG2_PROTOCOL 52</a></p>
-<p><a href="#tcg-storage-1">TCG Storage 53</a></p>
-<p><a href="#opal-password-1">OPAL Password 53</a></p>
-<p><a href="#opal-feature">OPAL Feature 53</a></p>
-<p><a href="#blocksid-1">BlockSid 53</a></p>
-<p><a href="#tper-reset-1">TPer reset 53</a></p>
-<p><a href="#glossary">Glossary 54</a></p>
-<p><a href="#references">References 56</a></p>
-<p><a href="#books">Books 56</a></p>
-<p><a href="#specifications">Specifications 56</a></p>
-<p><a href="#internet-links">Internet Links 58</a></p>
-<h1 id="overview">Overview</h1>
-<p>System firmware (BIOS/UEFI) plays an important role in computer platform
-security. If the system firmware or configuration is altered from the
-intended state, the system may experience loss of confidentiality,
-integrity, and availability, including system instability, system
-failure, and information leakage. Detecting a firmware code or
-configuration change is of great importance, and can be accomplished by
-measuring and monitoring firmware integrity.</p>
-<p>In 2011, the National Institute of Standards and Technology
-(<a href="https://www.nist.gov/" target="_blank">NIST</a>) published a draft version BIOS Integrity
-Measurement Guidelines
-(<a href="https://csrc.nist.gov/publications/detail/sp/800-155/draft" target="_blank">SP800-155</a>).
-More recently, the Trusted Computing Group
-(<a href="https://trustedcomputinggroup.org/" target="_blank">TCG</a>) has developed the following
-documents to discuss firmware integrity measurement:</p>
-<ul>
-<li><p>TCG Reference Integrity Manifest Information Model
-(<a href="https://trustedcomputinggroup.org/resource/tcg-reference-integrity-manifest-rim-information-model/" target="_blank">RIM-IM</a>)</p>
-</li>
-<li><p>TCG PC Client Reference Integrity Manifest
-(<a href="https://trustedcomputinggroup.org/resource/tcg-pc-client-reference-integrity-manifest-specification/" target="_blank">PC-RIM</a>)</p>
-</li>
-<li><p>PC Client Platform Firmware Profile
-(<a href="https://trustedcomputinggroup.org/resource/pc-client-specific-platform-firmware-profile-specification/" target="_blank">PFP</a>)</p>
-</li>
-<li><p>PC Client Platform Firmware Integrity Measurement
-(<a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG_PC_Client_FIM_v1_r40_02dec2020.pdf" target="_blank">FIM</a>) -
-Draft</p>
-</li>
-</ul>
-<p>The relationship between the above documents is as follows:</p>
-<ul>
-<li><p>The NIST SP800-155 specification provides a general guideline on
-requirements. It does not describe implementation details.</p>
-</li>
-<li><p>The TCG RIM-IM specification defines the Reference Integrity
-Manifest (RIM) structure that a Verifier uses to validate expected
-values (Assertions) against actual values (Evidence).</p>
-</li>
-<li><p>The TCG PC Client RIM specification complements the TCG RIM-IM
-specification and describes the RIM file formats, RIM storage
-locations within the PC Client, and provides references for the
-content of the RIM support files.</p>
-</li>
-<li><p>The TCG PFP defines the implementation for a PC client firmware
-architecture. It defines how the platform firmware measures the
-firmware components into Trusted Platform Module (TPM) Platform
-Configuration Register (PCR) and how the firmware records the
-actions in an event log.</p>
-</li>
-<li><p>The TCG FIM draft specification provides a framework for determining
-the configuration of the hardware and the identity of the firmware
-which has executed to initialize the endpoint into a booted state. A
-FIM compliant platform shall implement the TCG PFP specification in
-order to provide runtime evidence and the platform shall also
-provide assertions based upon the TCG RIM specification.</p>
-</li>
-</ul>
-<p>In this document, we will focus on the TCG Platform Firmware Profile
-specification. The PFP specification defines how a platform firmware
-contributes to the Root of Trust for Measurement (RTM) of the platform
-through extending digests (measurements) of code into a TPM Platform
-Configuration Register (PCR). The PFP specification also provides the
-documentation of that measurement in an event log.</p>
-<p>Figure 1 below shows a simple example of the firmware validation
-process. An Original Equipment Manufacturer (OEM) provides a RIM as the
-assertion to describe the system platform. When a corresponding system
-boots, the platform firmware measures the component into some TPM PCR&apos;s
-and generates an event log as evidence. The whole platform acts as an
-attester and presents the event log and PCR&apos;s as evidence to a verifier.
-Then the verifier can compare the evidence (event log and PCRs) and
-compare it with the assertion (RIM manifest).</p>
-<blockquote>
-<p><img src="media/image1.png" alt="">{width=&quot;6.5in&quot;
-height=&quot;4.319444444444445in&quot;}</p>
-</blockquote>
-<p><em>Figure 1. Measurement and Attestation</em></p>
-<blockquote>
-<p>A verifier can use various policies to determine the state of the
-platform. Some example policies include the following:</p>
-</blockquote>
-<ul>
-<li><p>All event log match - It means the platform is expected to meet all
-of the expected values.</p>
-</li>
-<li><p>Event log on code (PCR0) and security policy (PCR7) match but the
-configuration data (PCR1) has a mismatch -- It means someone changed
-the BIOS setup configuration.</p>
-</li>
-<li><p>Event log on security policy (PCR7) match but code (PCR0) mismatches
--- It means someone has updated the platform firmware code.</p>
-</li>
-<li><p>All event log mismatch -- It means the platform is not in the
-expected code or configuration state.</p>
-</li>
-</ul>
 <h1 id="tcg-trusted-boot-chain-in-edk-ii">TCG Trusted Boot Chain in EDK II</h1>
 <h2 id="trusted-boot-flow">Trusted Boot Flow</h2>
 <p>Trusted boot flow is activity that the host platform firmware measures,
@@ -2068,675 +1953,6 @@ needs to process the TCG MOR request. <strong>ProcessTcgMor</strong>() needs to 
 if there is any MOR request and connect the platform specific trusted
 storage.</p>
 <p>See Figure 12 for the TPer reset action in MOR driver.</p>
-<h1 id="other-trusted-boot-chains">Other Trusted Boot chains</h1>
-<p>Besides EDK II, other firmware or firmware related boot loaders also
-include the trusted boot chain.</p>
-<h2 id="coreboot">coreboot</h2>
-<p><a href="https://github.com/coreboot" target="_blank">coreboot</a> includes the measured boot flow.
-It is a simplified version. Table 4 shows the usage in coreboot.</p>
-<p>Table 4: coreboot TPM PCR Usage (Source: <a href="https://doc.coreboot.org/security/vboot/measured_boot.html" target="_blank">coreboot measured
-boot</a>)</p>
-<p>  <strong>PCR Index</strong>   <strong>PCR Usage</strong></p>
-<hr>
-<p>  0               Google vboot GBB flags
-  1               Google vboot GBB HWID
-  2               Core Root of Trust for Measurement (CRTM)
-  3               Runtime data like hwinfo.hex or MRC cache.
-  4               N/A
-  5               N/A
-  6               N/A
-  7               N/A</p>
-<p><a href="https://github.com/coreboot/vboot" target="_blank">vboot</a>
-<a href="https://github.com/coreboot/vboot/blob/master/firmware/2lib/include/2api.h" target="_blank">2api.h</a>
-defines two PCRs:</p>
-<ul>
-<li><p><strong>BOOT_MODE_PCR</strong>(0) -- It is to record the digest based on the
-current developer and recovery mode flags in the Google Binary Blob
-(GBB)</p>
-</li>
-<li><p><strong>HWID_DIGEST_PCR</strong>(1) -- It is to record the digest of the
-hardware ID (HWID) from the GBB.</p>
-</li>
-</ul>
-<p>In verstage,
-<a href="https://github.com/coreboot/coreboot/blob/master/src/security/vboot/verstage.c" target="_blank">vboot_logic.c</a>
-<strong>verstage_main</strong>() calls <strong>extend_pcrs</strong>() to extend two PCRs.
-<a href="https://github.com/coreboot/coreboot/blob/master/src/security/vboot/tpm_common.c" target="_blank">tpm_common.c</a>
-<strong>vboot_extend_pcr</strong>() calls
-<a href="https://github.com/coreboot/vboot/blob/master/firmware/2lib/2api.c" target="_blank">2api.c</a>
-<strong>vb2api_get_pcr_digest</strong>() to get the corresponding flags and HWID
-digest from the GBB and extends them to the TPM.</p>
-<p>Later, coreboot
-<a href="https://github.com/coreboot/coreboot/blob/master/src/security/tpm/tspi/crtm.h" target="_blank">crtm.h</a>
-defines two PCRs:</p>
-<ul>
-<li><p><strong>TPM_CRTM_PCR</strong>(2) -- It is for Core Root of Trust for
-Measurement (CRTM) modules, including all stages, data and blobs.
-These include COREBOOT CBFS (bootblock, fallback/verstage), FW_MAIN
-CBFS (fallback/romstage, fspm, fallback/postcar, fallback/ramstage,
-cpu_microcode_blob, fsps, vbt, fallback/dsdt.aml,
-fallback/payload), RO_VPD, GBB, SI_DESC, SI_GBE.</p>
-</li>
-<li><p><strong>TPM_RUNTIME_DATA_PCR</strong>(3) -- It is for runtime changeable data.
-Such as CMOS, SI_ME, RW_NVRAM.</p>
-</li>
-</ul>
-<p><a href="https://github.com/coreboot/coreboot/blob/master/src/security/tpm/tspi/crtm.c" target="_blank">crtm.c</a>
-<strong>tspi_measure_cbfs_hook</strong>() is the hook function to measure
-different components in the coreboot file system (CBFS) data. The
-CBFS_TYPE definition can be found at
-<a href="https://github.com/coreboot/coreboot/blob/master/src/commonlib/bsd/include/commonlib/bsd/cbfs_serialized.h" target="_blank">cbfs_serialized.h</a>.
-For example:</p>
-<ul>
-<li><p>CBFS_TYPE_MRC -- PCR2</p>
-</li>
-<li><p>CBFS_TYPE_STAGE -- PCR2</p>
-</li>
-<li><p>CBFS_TYPE_SELF -- PCR2</p>
-</li>
-<li><p>CBFS_TYPE_FIT -- PCR2</p>
-</li>
-<li><p>CBFS_TYPE_MRC_CACHE -- PCR3</p>
-</li>
-<li><p>Other -- runtime data go to PCR3, non-runtime data go to PCR2.</p>
-</li>
-</ul>
-<p>After that,
-<a href="https://github.com/coreboot/coreboot/blob/master/src/security/tpm/tspi/log.c" target="_blank">log.c</a>
-<strong>tcpa_log_add_table_entry</strong>() appends the log to a tcpa table.</p>
-<h2 id="grub2">Grub2</h2>
-<p><a href="https://github.com/rhboot/grub2" target="_blank">Grub2</a> extends the trusted boot chain
-from platform firmware into the OS. Table 5 shows the PCR usage in Grub.</p>
-<p>Table 5: GRUB TPM PCR Usage (Source: <a href="https://www.gnu.org/software/grub/manual/grub/html_node/Measured-Boot.html" target="_blank">Grub2 Measured
-Boot</a>)</p>
-<p>+---------------+-----------------------------------------------------+
-| <strong>PCR Index</strong> | <strong>PCR Usage</strong>                                       |
-+---------------+-----------------------------------------------------+
-| 8             | Grub command line:                                  |
-|               |                                                     |
-|               | All executed commands (including those from         |
-|               | configuration files) will be logged and measured as |
-|               | entered with a prefix of &quot;grub_cmd: &quot;              |
-+---------------+-----------------------------------------------------+
-|               | Kernel command line:                                |
-|               |                                                     |
-|               | Any command line passed to a kernel will be logged  |
-|               | and measured as entered with a prefix of            |
-|               | &quot;kernel_cmdline: &quot;                                 |
-+---------------+-----------------------------------------------------+
-|               | Module command line:                                |
-|               |                                                     |
-|               | Any command line passed to a kernel module will be  |
-|               | logged and measured as entered with a prefix of     |
-|               | &quot;module_cmdline: &quot;                                 |
-+---------------+-----------------------------------------------------+
-| 9             | Files:                                              |
-|               |                                                     |
-|               | Any file read by GRUB will be logged and measured   |
-|               | with a descriptive text corresponding to the        |
-|               | filename.                                           |
-+---------------+-----------------------------------------------------+</p>
-<p>Grub2
-<a href="https://github.com/rhboot/grub2/blob/master/include/grub/tpm.h" target="_blank">tpm.h</a>
-defines two PCR index:</p>
-<ul>
-<li><p><strong>GRUB_STRING_PCR</strong>(8) -- It is for the command line string.</p>
-</li>
-<li><p><strong>GRUB_BINARY_PCR</strong>(9) -- It is for a file binary.</p>
-</li>
-</ul>
-<p><a href="https://github.com/rhboot/grub2/blob/master/grub-core/commands/tpm.c" target="_blank">tpm.c</a>
-registers <strong>grub_tpm_verify_string</strong>() and
-<strong>grub_tpm_verify_write</strong>() to a grub_file_verifier structure. They
-will be called by <strong>grub_verify_string</strong>() and
-<strong>grub_verifiers_open</strong>() in
-<a href="https://github.com/rhboot/grub2/blob/master/grub-core/commands/verifiers.c" target="_blank">verifiers.c</a>.</p>
-<p>when grub2 executes a command line such as
-GRUB_VERIFY_MODULE_CMDLINE, GRUB_VERIFY_KERNEL_CMDLINE,
-GRUB_VERIFY_COMMAND or grub_create_loader_cmdline() in
-<a href="https://github.com/rhboot/grub2/blob/master/grub-core/lib/cmdline.c" target="_blank">cmdline.c</a>,
-<strong>grub_verify_string</strong>() is used. Finally,
-<strong>grub_tpm_verify_string</strong>() measures the string to PCR8.</p>
-<p><strong>grub_verifiers_open</strong>() is registered as one of grub_file_filters
-in
-<a href="https://github.com/rhboot/grub2/blob/master/include/grub/file.h" target="_blank">file.h</a>.
-Whenever grub uses
-<a href="https://github.com/rhboot/grub2/blob/master/grub-core/kern/file.c" target="_blank">file.c</a>
-<strong>grub_file_open</strong>() this filter is invoked. Finally,
-<strong>grub_tpm_verify_write</strong>() measures the file binary to PCR9.</p>
-<h2 id="linux-secure-boot-shim">Linux Secure Boot Shim</h2>
-<p><a href="https://github.com/rhboot/shim" target="_blank">Shim</a> is used to extend the UEFI secure
-boot concept to Linux. Table 6 shows the PCR usage in Shim.</p>
-<p>Table 6: Shim TPM PCR Usage</p>
-<p>+---------------+-----------------------------------------------------+
-| <strong>PCR Index</strong> | <strong>PCR Usage</strong>                                       |
-+===============+=====================================================+
-| 4             | UEFI application, such as second_stage, FALLBACK,  |
-|               | MOK_MANAGER.                                       |
-+---------------+-----------------------------------------------------+
-| 7             | UEFI variable, such as &quot;MokSBState&quot;.                |
-|               |                                                     |
-|               | Verification policy authority, such as &quot;Shim&quot;,      |
-|               | &quot;db&quot;, &quot;MokList&quot;.                                    |
-+---------------+-----------------------------------------------------+
-| 14            | UEFI variable, such as &quot;MokList&quot;, &quot;MokListX&quot;,       |
-|               | &quot;MokSBState&quot;.                                       |
-+---------------+-----------------------------------------------------+</p>
-<p><a href="https://github.com/rhboot/shim/blob/main/shim.c" target="_blank">shim.c</a>
-<strong>start_image</strong>() supports to execute a UEFI application image, such as
-second_stage, FALLBACK, MOK_MANAGER. It calls <strong>tpm_log_pe</strong>() to
-measure it to PCR4.</p>
-<p><a href="https://github.com/rhboot/shim" target="_blank">Shim</a> defines a set of UEFI variable to
-store the shim variable.
-<a href="https://github.com/rhboot/shim/blob/main/mok.c" target="_blank">mok.c</a>
-<strong>import_mok_state</strong>() checks the mok_state_variables, such as
-&quot;MokList&quot;, &quot;MokListX&quot;, &quot;MokSBState&quot;, &quot;MokDBState&quot;. In which, the
-&quot;MokSBState&quot; variable is measured to PCR7 via
-<strong>tpm_measure_variable</strong>(). The &quot;MokList&quot;, &quot;MokListX&quot;, &quot;MokSBState&quot;
-variables are measured to PCR14 via <strong>tpm_log_event</strong>().</p>
-<p>To follow the UEFI secure boot protocol,
-<a href="https://github.com/rhboot/shim/blob/main/shim.c" target="_blank">shim.c</a>
-<strong>verify_one_signature</strong>() will record &quot;Shim&quot; as the authority via
-<strong>tpm_measure_variable</strong>(), if the <strong>AuthenticodeVerify</strong>() succeeds.
-Also <strong>check_db_cert</strong>()/<strong>check_db_hash</strong>() will record &quot;db&quot;,
-&quot;MokList&quot; as authority if verification succeeds.</p>
-<h2 id="windows-bitlocker">Windows BitLocker</h2>
-<p>Microsoft Windows BitLocker uses the below-listed PCRs. The legacy-boot
-version of Windows used PCR[8, 9, 10, 11], while UEFI-based Windows
-uses PCR[11, 12, 13, 14] for the BitLocker policies. Table 7 shows the
-PCR usage in Windows BitLocker.</p>
-<p>Table 7: Windows BitLocker PCR Usage (Source: <a href="https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings" target="_blank">Windows
-BitLocker</a>)</p>
-<hr>
-<p>  <strong>PCR Index</strong>   <strong>PCR Usage (Legacy)</strong>     <strong>PCR Usage (UEFI)</strong>
-  8               NTFS Boot Sector           Reserved
-  9               NTFS Boot Block            Reserved
-  10              Boot Manager               Reserved
-  11              BitLocker access control   BitLocker access control
-  12              Reserved                   Data events and highly volatile events
-  13              Reserved                   Boot Module Details
-  14              Reserved                   Boot Authorities</p>
-<hr>
-<h1 id="looking-forward">Looking Forward</h1>
-<p>In trusted boot, the goal of the measurement is to support attestation
-later. The TPM implements the root of trust for storage (RTS) and the
-root of trust for reporting (RTR). The root of trust for measurement
-(RTM) can be implemented in static RTM (SRTM) or dynamic RTM (DRTM).
-From a platform perspective, there are other ways to implement the
-measurement and attestation.</p>
-<h2 id="platform-root-of-trust---cerberus">Platform Root of Trust - Cerberus</h2>
-<p>A platform root of trust (RoT) is an entity to authenticate the firmware
-on the platform. One example is the OCP Project
-<a href="https://github.com/opencomputeproject/Project_Olympus/blob/master/Project_Cerberus" target="_blank">Cerberus</a>.
-The platform RoT may also collect measurements from the devices and
-support remote attestation. Figure 14 shows the concept of platform RoT.</p>
-<p><img src="media/image14.png" alt="">{width=&quot;6.492361111111111in&quot;
-height=&quot;4.0in&quot;}</p>
-<p>Figure 14. Platform Root of Trust</p>
-<h2 id="device-root-of-trust---dice">Device Root of Trust - DICE</h2>
-<p>A device root of trust (RoT) is the RoT for a specific device to verify
-the mutable firmware and report the measurement. TCG defines the Device
-Identifier Composition Engine (DICE) architecture for embedded devices
-which do not have full TPM capability but still want to support
-attestation. DICE uses a layering architecture. A layered TCB
-architecture uses a constrained set of TCB capabilities to construct the
-next TCB layer. Figure 15 shows the DICE asymmetric attestation
-architecture. Similar to the TPM certificate, a DICE device can present
-a DICE certificate as the identity for the device. Figure 16 shows the
-DICE symmetric attestation architecture, which may be used in a resource
-constrain environment. For more detail, please refer to <a href="https://trustedcomputinggroup.org/work-groups/dice-architectures/" target="_blank">TCG DICE
-architecture</a>.</p>
-<p><img src="media/image15.png" alt="">{width=&quot;6.426221566054243in&quot;
-height=&quot;4.378205380577428in&quot;}</p>
-<p>Figure 15. DICE implicit identity based attestation (source: <a href="https://trustedcomputinggroup.org/resource/implicit-identity-based-device-attestation/" target="_blank">DICE
-Identity</a>)</p>
-<p><img src="media/image16.png" alt="">{width=&quot;6.0641021434820646in&quot;
-height=&quot;3.872992125984252in&quot;}</p>
-<p>Figure 16. DICE symmetric identity based attestation (source: <a href="https://trustedcomputinggroup.org/resource/symmetric-identity-based-device-attestation/" target="_blank">DICE
-symmetric
-Identity</a>)</p>
-<h2 id="server-management-domain-firmware">Server Management Domain Firmware</h2>
-<p>A server management domain (such as Baseboard Management Controller,
-also known as BMC) may have its own TPM module and SRTM because of its
-isolated execution environment. Table 8 shows the TPM PCR usage in a
-server management domain. For more details, please refer to <a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG_ServerManagementDomainFirmwareProfile_v1p00_11aug2020.pdf" target="_blank">TCG Server
-Management Domain Firmware
-Specification</a>.</p>
-<p>Table 8: TPM PCR Usage in Management Domain (Source: <a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG_ServerManagementDomainFirmwareProfile_v1p00_11aug2020.pdf" target="_blank">TCG
-Server</a>)</p>
-<p>  <strong>PCR Index</strong>   <strong>PCR Usage</strong></p>
-<hr>
-<p>  0               SRTM and Boot Loader
-  1               Management Domain Configuration
-  2               Loadable Devices
-  3               Loadable Devices Configuration
-  4               Reserved for future
-  5               Reserved for future
-  6               Vendor Specific
-  7               Reserved for future
-  8               For management domain OS
-  9               For management domain OS configuration
-  10~15          Reserved for future
-  16              Debug
-  17~23          Reserved for future</p>
-<h2 id="secure-communication----spdm">Secure communication -- SPDM</h2>
-<p>Now we have multiple device entities on the platform. We need a secure
-communication mechanism. The Desktop Management Taskforce (DMTF) Secure
-Protocol and Data Model (SPDM) serves that purpose. SPDM defines message
-formats, data objects, and sequences for performing message exchanges.
-The protocols defined by SPDM can be used for a wide range of security
-functions. The SPDM protocol is similar to the network Transport Layer
-Security (TLS) protocol, but it is customized for the communication
-between two device entities.</p>
-<p>SPDM 1.0 defines messages for hardware and firmware identification and
-authentication, including messages for hardware and firmware measurement
-collection and attestation. See Figure 4-3A. SPDM 1.1 defines a secure
-session establishment mechanism between two entities by using Diffie
-Hellman ephemeral (DHE) or Elliptic Curve DHE (ECDHE) key exchange with
-asymmetric authentication such as RSA or Elliptic Curve Digital
-Signature Algorithm (ECDSA). For a device that only supports symmetric
-cryptography, the secure session can also be established with a
-pre-shared key (PSK). Once the session is created, two entities can use
-Authentication Encryption and Associated Data (AEAD) for message
-communication. See Figure 4-3B. For more detail, please refer to <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0274_1.1.0.pdf" target="_blank">DMTF
-SPDM
-Specification</a>.</p>
-<p><img src="media/image17.png" alt="">{width=&quot;6.5in&quot;
-height=&quot;3.9166666666666665in&quot;}</p>
-<p>Figure 17. SPDM 1.0 (source:
-<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0274_1.1.0.pdf" target="_blank">SPDM</a>)</p>
-<p><img src="media/image18.png" alt="">{width=&quot;6.5in&quot;
-height=&quot;2.6666666666666665in&quot;}</p>
-<p>Figure 18. SPDM 1.1 (source:
-<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0274_1.1.0.pdf" target="_blank">SPDM</a>)</p>
-<p>Currently <a href="https://github.com/jyao1/openspdm" target="_blank">openspdm</a> project provides
-an open source tool to validate the SPDM implementation and some sample
-code for explaining the SPDM concept. Figure 4-4 shows the openspdm
-internal design.</p>
-<p><img src="media/image19.png" alt="">{width=&quot;6.5in&quot;
-height=&quot;2.954861111111111in&quot;}</p>
-<p>Figure 19. openspdm design (Source: <a href="https://github.com/jyao1/openspdm/blob/master/Doc/Design.md" target="_blank">openspdm
-doc</a>)</p>
-<h2 id="an-open-trusted-platform----putting-it-all-together">An Open Trusted Platform -- Putting it all together</h2>
-<p>To put all of the above technology together, Figure 4-5 shows an example
-of an open trusted platform.</p>
-<p><img src="media/image20.png" alt="">{width=&quot;6.5in&quot;
-height=&quot;4.166666666666667in&quot;}</p>
-<p>Figure 20. An Open Trusted Platform</p>
-<p><em>\
-</em></p>
-<h1 id="checklist-for-the-platform-developer">Checklist for the Platform Developer</h1>
-<h2 id="pcr-measurement-and-attestation">PCR, Measurement and Attestation</h2>
-<h3 id="general-guideline">General Guideline</h3>
-<p>1.1.1. Use an <strong>even PCR for code</strong> measurement in general.</p>
-<p>1.1.2. Use an <strong>odd PCR for data</strong> measurement in general.</p>
-<p>1.1.3. Do <strong>NOT</strong> record data that <strong>that are dynamic and changeable
-across the boot</strong>, such as system clock, fan speed, boot count, system
-reset reason, battery power, a nonce value, a pointer, etc.</p>
-<p>1.1.4. Do <strong>NOT</strong> record the <strong>instance of specific information that may
-be used to unique identify a system</strong>, such as an asset tag, a serial
-number, etc.</p>
-<p>1.1.5. Do <strong>NOT</strong> record <strong>any privacy sensitive information</strong>.</p>
-<h3 id="pcr-0">PCR 0</h3>
-<p>1.2.1. Do configure
-<a href="https://github.com/tianocore/edk2/blob/master/MdeModulePkg/MdeModulePkg.dec" target="_blank">PcdTcgPfpMeasurementRevision</a>
-to select TCG PFP compliance revision.</p>
-<p>1.2.2. Do configure
-<a href="https://github.com/tianocore/edk2/blob/master/MdeModulePkg/MdeModulePkg.dec" target="_blank">PcdFirmwareVersionString</a>
-to a valid Unicode string for version, so that it can be measured.</p>
-<p>1.2.3. Do report <strong>all FV information</strong> in PEI, so that all of them can
-be measured.</p>
-<p>1.2.4. Do install
-<a href="https://github.com/tianocore/edk2/blob/master/SecurityPkg/Include/Ppi/FirmwareVolumeInfoMeasurementExcluded.h" target="_blank">EFI_PEI_FIRMWARE_VOLUME_INFO_MEASUREMENT_EXCLUDED_PPI</a>
-for the FV that is ready measured.</p>
-<p>1.2.5. Do measure individual non-FV component, if it is loaded from the
-platform firmware.</p>
-<p>1.2.6. Do NOT update the loaded component before measuring it.</p>
-<p>1.2.7. Do measure the non-host platform information using
-<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Include/IndustryStandard/UefiTcgPlatform.h" target="_blank">EV_NONHOST_INFO</a>,
-if it exists.</p>
-<p>1.2.8. Do measure the non-host platform component using
-<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Include/IndustryStandard/UefiTcgPlatform.h" target="_blank">EV_NONHOST_CODE</a>
-if it can only be updated by the platform firmware.</p>
-<h3 id="pcr-1">PCR 1</h3>
-<p>1.3.1. Do measure Microcode.</p>
-<p>1.3.2. Do measure SMBIOS table after filtering changeable data or
-instance data.</p>
-<p>1.3.3. Do measure &quot;Entering ROM Based Setup&quot; with
-<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Include/IndustryStandard/UefiTcgPlatform.h" target="_blank">EV_ACTION</a>
-for a setup utility.</p>
-<p>1.3.4. Do measure security related configuration data from non-volatile
-storage, such as UEFI setup variable, or CMOS.</p>
-<p>1.3.5. Do measure the hardware device list with
-<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Include/IndustryStandard/UefiTcgPlatform.h" target="_blank">EV_TABLE_OF_DEVICES</a>.</p>
-<p>1.3.6. Do measure the non-host platform configuration using
-<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Include/IndustryStandard/UefiTcgPlatform.h" target="_blank">EV_NONHOST_CONFIG</a>
-if it can only be updated by the platform firmware.</p>
-<h3 id="pcr-2">PCR 2</h3>
-<p>1.4.1. Do link
-<a href="https://github.com/tianocore/edk2/tree/master/SecurityPkg/Library/DxeTpm2MeasureBootLib" target="_blank">DxeTpm2MeasureBootLib</a>
-as <strong>LAST</strong> NULL instance lib for SecurityStubDxe.inf in a DSC file.</p>
-<p>1.4.2. Do measure the non-host platform component using
-<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Include/IndustryStandard/UefiTcgPlatform.h" target="_blank">EV_NONHOST_CODE</a>
-if it can be updated by entities other than the platform firmware.</p>
-<p>1.4.3. Do measure SPDM-capable device hardware or firmware use
-<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Include/IndustryStandard/UefiTcgPlatform.h" target="_blank">EV_EFI_SPDM_FIRMWARE_BLOB</a>.</p>
-<h3 id="pcr-3">PCR 3</h3>
-<p>1.5.1. Do measure &quot;Entering ROM Based Setup&quot; with
-<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Include/IndustryStandard/UefiTcgPlatform.h" target="_blank">EV_ACTION</a>
-for a UEFI application based setup utility.</p>
-<p>1.5.2. Do measure the non-host platform configuration using
-<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Include/IndustryStandard/UefiTcgPlatform.h" target="_blank">EV_NONHOST_CONFIG</a>
-if it can be updated by entities other than the platform firmware.</p>
-<p>1.5.3. Do measure SPDM-capable device hardware configuration or firmware
-configuration use
-<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Include/IndustryStandard/UefiTcgPlatform.h" target="_blank">EV_EFI_SPDM_FIRMWARE_CONFIG</a>.</p>
-<h3 id="pcr-4">PCR 4</h3>
-<p>1.6.1. Do measure the additional pre-OS code loaded by an UEFI
-application the using EV_COMPACT_HASH.</p>
-<h3 id="pcr-5">PCR 5</h3>
-<p>1.7.1 Do measure the additional data configuration related to the UEFI
-application.</p>
-<h3 id="pcr-6">PCR 6</h3>
-<p>N/A</p>
-<h3 id="pcr-7">PCR 7</h3>
-<p>1.9.1. Do measure <strong>security configuration</strong> if it exits. (It means the
-whole policy.)</p>
-<p>1.9.2. Do measure <strong>security authority</strong> if it exits. (It means the
-specific policy which is used to verify the component.)</p>
-<p>1.9.3. Do measure the security feature disabling event, such as &quot;UEFI
-Debug Mode&quot;, &quot;DMA Protection Disabled&quot;.</p>
-<h3 id="noaction-event">NO_ACTION event</h3>
-<p>1.10.1. Do record startup locality event, if an ACM starts the TPM.</p>
-<h2 id="tpm-device-startup">TPM Device Startup</h2>
-<h3 id="device-selection">Device Selection</h3>
-<p>2.1.1. Do NOT support TPM1.2.</p>
-<p>2.1.2. Do choose a proper Tcg2Config driver for device selection, such
-as
-<a href="https://github.com/tianocore/edk2/tree/master/SecurityPkg/Tcg/Tcg2Config" target="_blank">Tcg2Config</a>
-or platform specific one.</p>
-<p>2.1.3. Do set
-<a href="https://github.com/tianocore/edk2/blob/master/SecurityPkg/SecurityPkg.dec" target="_blank">PcdTpmInstanceGuid</a>
-directly after the TPM device selection.</p>
-<p>2.1.4. Do set
-<a href="https://github.com/tianocore/edk2/blob/master/SecurityPkg/SecurityPkg.dec" target="_blank">PcdTpm2InitializationPolicy</a>
-if the TPM device is started.</p>
-<h3 id="tpm-device-interface">TPM Device Interface</h3>
-<p>2.2.1. Do link proper
-<a href="https://github.com/tianocore/edk2/blob/master/SecurityPkg/Include/Library/Tpm2DeviceLib.h" target="_blank">Tpm2DeviceLib</a>
-to Tcg2Dxe.inf and Tcg2Pei.inf in platform DSC, such as
-<a href="https://github.com/tianocore/edk2/tree/master/SecurityPkg/Library/Tpm2DeviceLibDTpm" target="_blank">Tpm2DeviceLibDTpm</a>
-or other TPM device such as I2C.</p>
-<h3 id="error-handling">Error Handling</h3>
-<p>2.3.1. Do register a ReportStatusCode callback handler to process the
-TPM error, if the platform wants to reset system, or disable the TPM
-hardware on error.</p>
-<h2 id="tcg-physical-presence">TCG Physical Presence</h2>
-<p>3.1.1. Do call <strong>Tcg2PhysicalPresenceLibNeedUserConfirm</strong>() and
-<strong>Tcg2PhysicalPresenceLibProcessRequest</strong>() in the platform BDS before
-EndOfDxe.</p>
-<p>3.1.2. Do <strong>connect all trusted consoles</strong> if
-<strong>Tcg2PhysicalPresenceLibNeedUserConfirm</strong>() is TRUE.</p>
-<h3 id="tpm-bank-selection">TPM Bank Selection</h3>
-<p>3.2.1. Do choose
-<a href="https://github.com/tianocore/edk2/tree/master/SecurityPkg/Library/HashLibBaseCryptoRouter" target="_blank">HashLibBaseCryptoRouter</a>
-if the platform wants to support crypto agile.</p>
-<p>3.2.2. Do link proper multiple HashLib instances, such as
-<a href="https://github.com/tianocore/edk2/tree/master/SecurityPkg/Library/HashInstanceLibSha256" target="_blank">HashInstanceLibSha256</a>,
-<a href="https://github.com/tianocore/edk2/tree/master/SecurityPkg/Library/HashInstanceLibSha384" target="_blank">HashInstanceLibSha384</a>,
-<a href="https://github.com/tianocore/edk2/tree/master/SecurityPkg/Library/HashInstanceLibSha512" target="_blank">HashInstanceLibSha512</a>
-and
-<a href="https://github.com/tianocore/edk2/tree/master/SecurityPkg/Library/HashInstanceLibSm3" target="_blank">HashInstanceLibSm3</a>,
-to Tcg2Pei.inf and Tcg2Dxe.inf in platform DSC.</p>
-<p>3.2.3. Do NOT use
-<a href="https://github.com/tianocore/edk2/tree/master/SecurityPkg/Library/HashInstanceLibSha1" target="_blank">HashInstanceLibSha1</a>.</p>
-<h3 id="tpm-hierarchy-management">TPM Hierarchy Management</h3>
-<p>3.3.1. Do choose a proper Tcg2Platform module to manage the TPM platform
-hierarchy, such as
-<a href="https://github.com/tianocore/edk2-platforms/tree/master/Platform/Intel/MinPlatformPkg/Tcg" target="_blank">Tcg2Platform</a>
-or platform specific one.</p>
-<p>3.3.2. Do randomize TPM platform auth before EndOfDxe.</p>
-<p>3.3.3. Do randomize TPM platform auth before EndOfPei in S3 resume, if
-TPM error happens.</p>
-<p>3.3.4. Do send <strong>Tpm2HierarchyControl</strong>() command to enable or disable
-the hierarchy, if it is supported.</p>
-<h2 id="tcg-memory-override">TCG Memory Override</h2>
-<p>4.1.1. Do check MOR variable and clear memory in memory initialization
-if MOR request is set.</p>
-<p>4.1.2. Do treat MOR variable missing as requested.</p>
-<h2 id="os-interface">OS Interface</h2>
-<h3 id="acpi-table">ACPI Table</h3>
-<p>5.1.1. Do configure
-<a href="https://github.com/tianocore/edk2/blob/master/SecurityPkg/SecurityPkg.dec" target="_blank">PcdTpm2AcpiTableRev</a>
-to indicate TPM2 ACPI table version.</p>
-<p>5.1.2. Do configure
-<a href="https://github.com/tianocore/edk2/blob/master/MdeModulePkg/MdeModulePkg.dec" target="_blank">PcdTpmPlatformClass</a>
-for client or server.</p>
-<p>5.1.3. Do configure
-<a href="https://github.com/tianocore/edk2/blob/master/SecurityPkg/SecurityPkg.dec" target="_blank">PcdTcgPhysicalPresenceInterfaceVer</a>
-to indicate the TCG Physical Presence Interface version.</p>
-<p>5.1.4. Do configure
-<a href="https://github.com/tianocore/edk2/blob/master/SecurityPkg/SecurityPkg.dec" target="_blank">PcdTpm2CurrentIrqNum</a>
-and
-<a href="https://github.com/tianocore/edk2/blob/master/SecurityPkg/SecurityPkg.dec" target="_blank">PcdTpm2PossibleIrqNumBuf</a>
-to indicate the TPM IRQ information.</p>
-<h3 id="tcg2protocol">TCG2_PROTOCOL</h3>
-<p>N/A</p>
-<h2 id="tcg-storage">TCG Storage</h2>
-<h3 id="opal-password">OPAL Password</h3>
-<p>6.1.1. Do <strong>connect trusted storages and trusted consoles</strong> in Platform
-BDS before EndOfDxe if there is OPAL password request.</p>
-<p>6.1.2. Do include storage disk drivers in PEI for S3 auto-unlock.</p>
-<h3 id="opal-feature">OPAL Feature</h3>
-<p>6.2.1. Do <strong>connect trusted storages and trusted consoles</strong> in Platform
-BDS before EndOfDxe if there is OPAL feature request.</p>
-<h3 id="blocksid">BlockSid</h3>
-<p>6.3.1. Do enable BlockSid by default.</p>
-<h3 id="tper-reset">TPer reset</h3>
-<p>6.4.1. Do <strong>connect trusted storages</strong> in Platform BDS before EndOfDxe
-if MOR request is set.</p>
-<p>6.4.2. Do treat MOR variable missing as requested.</p>
-<h1 id="glossary">Glossary</h1>
-<p>ACM -- Authenticated Code Module (Intel)</p>
-<p>AEAD -- Authenticated Encryption with Associated Data</p>
-<p>APCI -- Advanced Power and Configuration Interface</p>
-<p>CoSWID -- Concise SWID</p>
-<p>CCC -- Confidential Computing Consortium</p>
-<p>CRB -- Command Response Buffer</p>
-<p>DHE -- Diffie-Hellman ephemeral (key exchange)</p>
-<p>DICE -- Device Identifier Composition Engine</p>
-<p>DMA -- Direct Memory Access</p>
-<p>DRTM -- Dynamic Root of Trust for Measurement</p>
-<p>ECDHE -- Elliptic Curve DHE (key exchange)</p>
-<p>ECDSA -- Elliptic Curve Digital Signature Algorithm</p>
-<p>FIM -- Firmware Integrity Measurement</p>
-<p>GP -- Global Platform</p>
-<p>IBV -- Independent BIOS Vendor</p>
-<p>IFV -- Independent Firmware Vendor</p>
-<p>IHV -- Independent Hardware Vendor</p>
-<p>ISV -- Independent Silicon Vendor</p>
-<p>MAC -- Message Authentication Code</p>
-<p>MMIO -- Memory Mapped I/O</p>
-<p>MOR -- Memory Overwrite</p>
-<p>MSID -- Manufactured SID</p>
-<p>ODM -- Original Design Manufacturer</p>
-<p>OEM -- Original Equipment Manufacturer</p>
-<p>OSV -- Operating System Vendor</p>
-<p>PFP -- TCG Platform Firmware Profile specification</p>
-<p>PI -- Platform Initialization (UEFI)</p>
-<p>PP -- Physical Presence</p>
-<p>PSID -- Physical Presence SID</p>
-<p>PSK -- Pre-shared key</p>
-<p>PTP --Platform TPM Profile</p>
-<p>RIM -- TCG Reference Integrity Manifest</p>
-<p>RoT -- Root of Trust</p>
-<p>RSA -- Rivest Shamir Adlemann (algorithm)</p>
-<p>RTM -- Root of Trust for Measurement</p>
-<p>SID -- TCG Storage Secure Identifier</p>
-<p>SMBIOS -- DMTF System Management BIOS</p>
-<p>SMM -- x86 System Management Mode.</p>
-<p>SP -- Storage Security Provider</p>
-<p>SPDM -- Secure Protocol and Data Model (DMTF)</p>
-<p>SRTM -- Static Root of Trust for Measurement</p>
-<p>SWID -- Software Identification</p>
-<p>TCB -- Trust Computing Base</p>
-<p>TCG -- Trust Computing Group</p>
-<p>TEE -- Trusted Execution Environment</p>
-<p>TLS -- Transport Layer Security</p>
-<p>TPer -- Trusted Peripheral</p>
-<p>TPM -- Trust Platform Module</p>
-<p>TSS -- TPM Software Stack</p>
-<p>TZ -- TrustZone (ARM)</p>
-<p>UEFI -- Unified Extensible Firmware Interface</p>
-<h1 id="references">References</h1>
-<h2 id="books">Books</h2>
-<p>[Building Secure Firmware] Jiewen Yao, Vincent Zimmer, <em>Building
-Secure Firmware: Armoring the Foundation of the Platform</em>, 2020, Apress,
-<a href="https://intel-my.sharepoint.com/personal/vincent_zimmer_intel_com/Documents/Documents/https" target="_blank">https</a><a href="https://www.amazon.com/gp/product/1484261054/" target="_blank">://www.amazon.com/gp/product/1484261054/</a>,</p>
-<p><a href="https://link.springer.com/content/pdf/10.1007%2F978-1-4842-6106-4.pdf" target="_blank">https://link.springer.com/content/pdf/10.1007%2F978-1-4842-6106-4.pdf</a></p>
-<p>[TPM2.0 Book] Will Arthur, David Challener, <em>A Practical Guide to
-TPM2.0</em>, 2015, Apress,
-<a href="https://www.amazon.com/Practical-Guide-TPM-2-0-Platform-ebook/dp/B0781D8J6W" target="_blank">https://www.amazon.com/Practical-Guide-TPM-2-0-Platform-ebook/dp/B0781D8J6W</a>,
-<a href="https://link.springer.com/book/10.1007%2F978-1-4302-6584-9" target="_blank">https://link.springer.com/book/10.1007%2F978-1-4302-6584-9</a></p>
-<h2 id="specifications">Specifications</h2>
-<p>[NIST SP800-155] BIOS Integrity Measurement Guidelines, 2011,
-<a href="https://csrc.nist.gov/publications/detail/sp/800-155/draft" target="_blank">https://csrc.nist.gov/publications/detail/sp/800-155/draft</a></p>
-<p>[NIST SWID] Software Identification SWID,
-<a href="https://csrc.nist.gov/projects/Software-Identification-SWID" target="_blank">https://csrc.nist.gov/projects/Software-Identification-SWID</a></p>
-<p>[NIST IR8086] NISTIR.8060 Guidelines for the Creation of Interoperable
-SWID Tags, <a href="https://csrc.nist.gov/publications/detail/nistir/8060/final" target="_blank">https://csrc.nist.gov/publications/detail/nistir/8060/final</a></p>
-<p>[IETF CoSWID] Concise Software Identification Tags,
-<a href="https://datatracker.ietf.org/doc/draft-ietf-sacm-coswid/" target="_blank">https://datatracker.ietf.org/doc/draft-ietf-sacm-coswid/</a></p>
-<p>[IETF CoSWID-RIM] Reference Integrity Measurement Extension for
-Concise Software Identities,
-<a href="https://datatracker.ietf.org/doc/draft-birkholz-rats-coswid-rim/" target="_blank">https://datatracker.ietf.org/doc/draft-birkholz-rats-coswid-rim/</a></p>
-<p>[TCG RIM-IM] TCG Reference Integrity Manifest Information Model
-Specification, 2020,
-<a href="https://trustedcomputinggroup.org/resource/tcg-reference-integrity-manifest-rim-information-model/" target="_blank">https://trustedcomputinggroup.org/resource/tcg-reference-integrity-manifest-rim-information-model/</a></p>
-<p>[TCG PC Client RIM] TCG PC Client Reference Integrity Manifest
-Specification, 2020,
-<a href="https://trustedcomputinggroup.org/resource/tcg-pc-client-reference-integrity-manifest-specification/" target="_blank">https://trustedcomputinggroup.org/resource/tcg-pc-client-reference-integrity-manifest-specification/</a></p>
-<p>[TCG PC Client FIM] TCG PC Client Platform Firmware Integrity
-Measurement Specification, 2020,</p>
-<p>[TCG PC Client PFP] TCG PC Client Platform Firmware Profile
-Specification, 2020,
-<a href="https://trustedcomputinggroup.org/resource/pc-client-specific-platform-firmware-profile-specification/" target="_blank">https://trustedcomputinggroup.org/resource/pc-client-specific-platform-firmware-profile-specification/</a>,
-<a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG_PCClient_PFP_r1p05_v22_02dec2020.pdf" target="_blank">https://trustedcomputinggroup.org/wp-content/uploads/TCG_PCClient_PFP_r1p05_v22_02dec2020.pdf</a></p>
-<p>[TCG PC Client PTP] TCG PC Client Platform TPM Profile Specification,
-2020,
-<a href="https://trustedcomputinggroup.org/resource/pc-client-platform-tpm-profile-ptp-specification/" target="_blank">https://trustedcomputinggroup.org/resource/pc-client-platform-tpm-profile-ptp-specification/</a>,</p>
-<p>[TCG Physical Presence] TCG PC Client Platform Physical Presence
-Interface Specification, 2015,
-<a href="https://trustedcomputinggroup.org/resource/tcg-physical-presence-interface-specification/" target="_blank">https://trustedcomputinggroup.org/resource/tcg-physical-presence-interface-specification/</a></p>
-<p>[TCG MOR] TCG PC Client Platform Reset Attack Mitigation
-Specification, 2019,
-<a href="https://trustedcomputinggroup.org/resource/pc-client-work-group-platform-reset-attack-mitigation-specification/" target="_blank">https://trustedcomputinggroup.org/resource/pc-client-work-group-platform-reset-attack-mitigation-specification/</a></p>
-<p>[TCG TPM ACPI] &quot;TCG ACPI Specification, 2017,
-<a href="https://trustedcomputinggroup.org/resource/tcg-acpi-specification/" target="_blank">https://trustedcomputinggroup.org/resource/tcg-acpi-specification/</a></p>
-<p>[TCG UEFI Protocol] TCG EFI Protocol Specification, 2016,
-<a href="https://trustedcomputinggroup.org/resource/tcg-efi-protocol-specification/" target="_blank">https://trustedcomputinggroup.org/resource/tcg-efi-protocol-specification/</a></p>
-<p>[TCG Storage] TCG Storage Architecture Core Specification,
-<a href="https://trustedcomputinggroup.org/tcg-storage-architecture-core-specification/" target="_blank">https://trustedcomputinggroup.org/tcg-storage-architecture-core-specification/</a></p>
-<p>[TCG SIIS] TCG Storage Interface Interactions Specification,
-<a href="https://trustedcomputinggroup.org/resource/storage-work-group-storage-interface-interactions-specification/" target="_blank">https://trustedcomputinggroup.org/resource/storage-work-group-storage-interface-interactions-specification/</a></p>
-<p>[TCG OPAL] Storage Work Group Storage Security Subsystem Class: Opal,
-<a href="https://trustedcomputinggroup.org/storage-work-group-storage-security-subsystem-class-opal/" target="_blank">https://trustedcomputinggroup.org/storage-work-group-storage-security-subsystem-class-opal/</a></p>
-<p>[TCG Pyrite] Storage Work Group Storage Security Subsystem Class:
-Pyrite,
-<a href="https://trustedcomputinggroup.org/resource/tcg-storage-security-subsystem-class-pyrite/" target="_blank">https://trustedcomputinggroup.org/resource/tcg-storage-security-subsystem-class-pyrite/</a></p>
-<p>[TCG Ruby] Storage Work Group Storage Security Subsystem Class: Ruby,
-<a href="https://trustedcomputinggroup.org/resource/tcg-storage-security-subsystem-class-ruby-specification/" target="_blank">https://trustedcomputinggroup.org/resource/tcg-storage-security-subsystem-class-ruby-specification/</a></p>
-<p>[TCG BlockSID] TCG Storage Feature Set: Block SID Authentication,
-2015,
-<a href="https://trustedcomputinggroup.org/resource/tcg-storage-feature-set-block-sid-authentication-specification/" target="_blank">https://trustedcomputinggroup.org/resource/tcg-storage-feature-set-block-sid-authentication-specification/</a>,
-<a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG_Storage_BlockIDAuth_v1p01_r1p14_13jan2021.pdf" target="_blank">https://trustedcomputinggroup.org/wp-content/uploads/TCG_Storage_BlockIDAuth_v1p01_r1p14_13jan2021.pdf</a></p>
-<p>[TCG PSID] TCG Storage Feature Set: PSID,
-<a href="https://trustedcomputinggroup.org/resource/tcg-storage-opal-feature-set-psid/" target="_blank">https://trustedcomputinggroup.org/resource/tcg-storage-opal-feature-set-psid/</a></p>
-<p>[TCG Vendor ID] TCG TPM Vendor ID Registry,
-<a href="https://trustedcomputinggroup.org/resource/vendor-id-registry/" target="_blank">https://trustedcomputinggroup.org/resource/vendor-id-registry/</a></p>
-<p>[TCG DICE Identity] Implicit Identity Based Device Attestation, 2018,
-<a href="https://trustedcomputinggroup.org/resource/implicit-identity-based-device-attestation/" target="_blank">https://trustedcomputinggroup.org/resource/implicit-identity-based-device-attestation/</a></p>
-<p>[TCG DICE Symmetric Identity] Symmetric Identity Based Device
-Attestation, 2020,
-<a href="https://trustedcomputinggroup.org/resource/symmetric-identity-based-device-attestation/" target="_blank">https://trustedcomputinggroup.org/resource/symmetric-identity-based-device-attestation/</a></p>
-<p>[TCG DICE Layer] DICE Layering Architecture, 2020,
-<a href="https://trustedcomputinggroup.org/resource/dice-layering-architecture/" target="_blank">https://trustedcomputinggroup.org/resource/dice-layering-architecture/</a></p>
-<p>[TCG Server Domain] TCG Server Management Domain Firmware Profile,
-2020,
-<a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG_ServerManagementDomainFirmwareProfile_v1p00_11aug2020.pdf" target="_blank">https://trustedcomputinggroup.org/wp-content/uploads/TCG_ServerManagementDomainFirmwareProfile_v1p00_11aug2020.pdf</a></p>
-<p>[ACPI] ACPI specification, 2019, <a href="https://www.uefi.org/specifications" target="_blank">https://www.uefi.org/specifications</a></p>
-<p>[ACPI and PnP vendor IDs] <a href="https://uefi.org/PNP_ACPI_Registry" target="_blank">https://uefi.org/PNP_ACPI_Registry</a></p>
-<p>[SMBIOS] DSP0134 System Management BIOS specification, 2020,
-<a href="https://www.dmtf.org/standards/smbios" target="_blank">https://www.dmtf.org/standards/smbios</a></p>
-<p>[SPDM] DSP0274 Security Protocol and Data Model Specification, 2020,
-<a href="https://www.dmtf.org/standards/pmci" target="_blank">https://www.dmtf.org/standards/pmci</a></p>
-<p>[Cerberus] Project Cerberus Architecture Overview, 2018,
-<a href="https://github.com/opencomputeproject/Project_Olympus/blob/master/Project_Cerberus/Project%20Cerberus%20Architecture%20Overview.pdf" target="_blank">https://github.com/opencomputeproject/Project_Olympus/blob/master/Project_Cerberus</a></p>
-<p>[AMD] AMD Architecture Programmer&apos;s Manual, 2019,
-<a href="https://developer.amd.com/resources/developer-guides-manuals/" target="_blank">https://developer.amd.com/resources/developer-guides-manuals/</a></p>
-<p>[Intel SDM] Intel 64 and IA-32 Architecture Software Developer
-Manuals, 2019, <a href="https://software.intel.com/en-us/articles/intel-sdm" target="_blank">https://software.intel.com/en-us/articles/intel-sdm</a></p>
-<p>[Intel FSP] Intel Firmware Support Package External Architecture
-Specification,
-<a href="https://software.intel.com/content/www/us/en/develop/articles/intel-firmware-support-package.html" target="_blank">https://software.intel.com/content/www/us/en/develop/articles/intel-firmware-support-package.html</a></p>
-<p>[TrustZone] ARM TrustZone,
-<a href="https://developer.arm.com/ip-products/security-ip/trustzone" target="_blank">https://developer.arm.com/ip-products/security-ip/trustzone</a></p>
-<h2 id="internet-links">Internet Links</h2>
-<p>[TCG] Trusted Computing Group, <a href="https://trustedcomputinggroup.org/" target="_blank">https://trustedcomputinggroup.org/</a></p>
-<p>[CCC] Confidential Computing Consortium,
-<a href="https://confidentialcomputing.io/" target="_blank">https://confidentialcomputing.io/</a></p>
-<p>[TEE] Confidential Computing: Hardware-Based Trusted Execution for
-Applications and Data, 2020,
-<a href="https://confidentialcomputing.io/white-papers/" target="_blank">https://confidentialcomputing.io/white-papers/</a></p>
-<p>[EDK II] <a href="https://github.com/tianocore/edk2" target="_blank">https://github.com/tianocore/edk2</a></p>
-<p>[EDK II TPM2] Jiewen Yao, Vincent Zimmer, &quot;A Tour Beyond BIOS - with
-the UEFI TPM2 Support in EDK II&quot;, 2014,
-<a href="https://software.intel.com/sites/default/files/managed/94/2d/a_tour_beyond_bios_implementing_tpm2_support_in_edkii.pdf" target="_blank">https://software.intel.com/sites/default/files/managed/94/2d/a_tour_beyond_bios_implementing_tpm2_support_in_edkii.pdf</a></p>
-<p>[EDK II Tcg2DumpLog] Tcg2DumpLog tool,
-<a href="https://github.com/jyao1/EdkiiShellTool/tree/master/EdkiiShellToolPkg/Tcg2DumpLog" target="_blank">https://github.com/jyao1/EdkiiShellTool/tree/master/EdkiiShellToolPkg/Tcg2DumpLog</a></p>
-<p>[EDK II TPM Emulator] EDK II TPM Emulator,
-<a href="https://github.com/jyao1/edk2/tree/feature_tpm_emulator/EmulatorPkg/Tpm2" target="_blank">https://github.com/jyao1/edk2/tree/feature_tpm_emulator/EmulatorPkg/Tpm2</a></p>
-<p>[UEFI TCTI] <a href="https://github.com/tpm2-software/tpm2-tcti-uefi" target="_blank">https://github.com/tpm2-software/tpm2-tcti-uefi</a></p>
-<p>[EDK II Tpm2TssPkg] EDK II Tpm2TssPkg,
-<a href="https://github.com/flihp/edk2/tree/tpm2-tss/Tpm2TssPkg" target="_blank">https://github.com/flihp/edk2/tree/tpm2-tss/Tpm2TssPkg</a></p>
-<p>[EDK II DeviceSecurityPkg] EDK II DeviceSecurityPkg,
-<a href="https://github.com/jyao1/edk2/tree/DeviceSecurity/DeviceSecurityPkg" target="_blank">https://github.com/jyao1/edk2/tree/DeviceSecurity/DeviceSecurityPkg</a></p>
-<p>[EDK II FSP Manifest Tool] FSP manifest tool,
-<a href="https://github.com/jyao1/FSP/tree/FspAttestation/Tools/ManifestTools" target="_blank">https://github.com/jyao1/FSP/tree/FspAttestation/Tools/ManifestTools</a></p>
-<p>[TPM2 Software] <a href="https://github.com/tpm2-software" target="_blank">https://github.com/tpm2-software</a></p>
-<p>[Remote Attestation]
-<a href="https://tpm2-software.github.io/tpm2-tss/getting-started/2019/12/18/Remote-Attestation.html" target="_blank">https://tpm2-software.github.io/tpm2-tss/getting-started/2019/12/18/Remote-Attestation.html</a></p>
-<p>[Microsoft TPM2 Simulator]
-<a href="https://github.com/microsoft/ms-tpm-20-ref" target="_blank">https://github.com/microsoft/ms-tpm-20-ref</a></p>
-<p>[TCG TPM2 Simulator] <a href="https://github.com/stwagnr/tpm2simulator" target="_blank">https://github.com/stwagnr/tpm2simulator</a></p>
-<p>[OpenPower Trusted Boot] OpenPOWER secure and trusted boot , Part 1:
-Using trusted boot on IBM OpenPOWER servers, 2017,
-<a href="https://developer.ibm.com/articles/trusted-boot-openpower/" target="_blank">https://developer.ibm.com/articles/trusted-boot-openpower/</a></p>
-<p>[coreboot] <a href="https://review.coreboot.org/" target="_blank">https://review.coreboot.org/</a>,
-<a href="https://github.com/coreboot" target="_blank">https://github.com/coreboot</a></p>
-<p>[coreboot MeasuredBoot] coreboot Measured Boot,
-<a href="https://doc.coreboot.org/security/vboot/measured_boot.html" target="_blank">https://doc.coreboot.org/security/vboot/measured_boot.html</a></p>
-<p>[GRUB] <a href="http://www.gnu.org/software/grub/" target="_blank">http://www.gnu.org/software/grub/</a>,
-<a href="https://github.com/rhboot/shim" target="_blank">https://github.com/rhboot/shim</a></p>
-<p>[Grub Measured Boot]
-<a href="https://www.gnu.org/software/grub/manual/grub/html_node/Measured-Boot.html" target="_blank">https://www.gnu.org/software/grub/manual/grub/html_node/Measured-Boot.html</a></p>
-<p>[openspdm] <a href="https://github.com/jyao1/openspdm" target="_blank">https://github.com/jyao1/openspdm</a></p>
-<p>[Windows BitLocker] Windows BitLocker Group Policy Setting,</p>
-<p><a href="https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings" target="_blank">https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings</a></p>
-<p>[UEFI TCG] Vincent Zimmer, Shiva Dasari (IBM), Sean Brogan (IBM),
-&quot;Trusted Platforms:  UEFI, PI, and TCG-based firmware,&quot; Intel/IBM
-whitepaper, September 2009,
-<a href="http://www.cs.berkeley.edu/~kubitron/courses/cs194-24-S14/hand-outs/SF09_EFIS001_UEFI_PI_TCG_White_Paper.pdf" target="_blank">http://www.cs.berkeley.edu/~kubitron/courses/cs194-24-S14/hand-outs/SF09_EFIS001_UEFI_PI_TCG_White_Paper.pdf</a></p>
-<p>[TCG-CW] Ned Smith, A Comparison of the trusted Computing Group
-Security Model with Clark-Wilson, 2014,
-<a href="https://www.semanticscholar.org/paper/A-Comparison-of-the-trusted-Computing-Group-Model-Smith/fa82426d99b86d1040f80b8bd8e0ac4f785b29a6" target="_blank">https://www.semanticscholar.org/paper/A-Comparison-of-the-trusted-Computing-Group-Model-Smith/fa82426d99b86d1040f80b8bd8e0ac4f785b29a6</a></p>
-<p>[Windows DMA Protection] Kernel DMA Protection (Memory Access
-Protection) for OEMs,</p>
-<p><a href="https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-kernel-dma-protection" target="_blank">https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-kernel-dma-protection</a></p>
-<p>[Windows Secured-Core PC] Force firmware code to be measured and
-attested by Secure Launch on Windows 10,
-<a href="https://www.microsoft.com/security/blog/2020/09/01/force-firmware-code-to-be-measured-and-attested-by-secure-launch-on-windows-10/" target="_blank">https://www.microsoft.com/security/blog/2020/09/01/force-firmware-code-to-be-measured-and-attested-by-secure-launch-on-windows-10/</a></p>
-<p>[KeyStone] Keystone Enclave, <a href="https://keystone-enclave.org/" target="_blank">https://keystone-enclave.org/</a></p>
 
                                 
                                 </section>
@@ -2751,7 +1967,7 @@ attested by Secure Launch on Windows 10,
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/02/2020 10:55:54]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 06:05:14]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -2764,10 +1980,14 @@ attested by Secure Launch on Windows 10,
 
             
                 
-                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Understanding the Trusted Boot Chain Implementation">
+                <a href="2_Overview.html" class="navigation navigation-prev " aria-label="Previous page: Overview">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="4_Other_Trusted_Boot_Chains.html" class="navigation navigation-next " aria-label="Next page: Other Trusted Boot Chains">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -2776,7 +1996,7 @@ attested by Secure Launch on Windows 10,
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1 First Chapter","level":"1.2","depth":1,"next":{"title":"Tables","level":"2.1","depth":1,"ref":"","articles":[]},"previous":{"title":"Understanding the Trusted Boot Chain Implementation","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter1.md","mtime":"2020-12-02T22:55:22.056Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-02T22:55:54.850Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TCG Trusted Boot Chain in EDK II","level":"1.6","depth":1,"next":{"title":"Other Trusted Boot Chains","level":"1.7","depth":1,"path":"4_Other_Trusted_Boot_Chains.md","ref":"4_Other_Trusted_Boot_Chains.md","articles":[]},"previous":{"title":"Overview","level":"1.5","depth":1,"path":"2_Overview.md","ref":"2_Overview.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","mtime":"2020-12-07T18:04:44.688Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T18:05:14.964Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
