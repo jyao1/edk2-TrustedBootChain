@@ -270,7 +270,7 @@
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 10:33:23]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 11:10:23]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -343,16 +343,48 @@ In this document we will focus on the usage of PCRs [0-7], as
 described in the following table.</p>
 <h6 id="table-1-tpm-pcr-usage">Table 1 TPM PCR Usage</h6>
 <p>(Source: <a href="https://trustedcomputinggroup.org/resource/pc-client-specific-platform-firmware-profile-specification/" target="_blank">TCG PFP Specification</a>)</p>
-<p><strong>PCR Index</strong>   <strong>PCR Usage</strong></p>
-<hr>
-<p>0               SRTM, BIOS, Host Platform Extensions, Embedded Option ROMs and PI Drivers
-1               Host Platform Configuration
-2               UEFI driver and application Code
-3               UEFI driver and application Configuration and Data
-4               UEFI Boot Manager Code (usually the MBR) and Boot Attempts
-5               Boot Manager Code Configuration and Data (for use by the Boot Manager Code) and GPT/Partition Table
-6               Host Platform Manufacturer Specific
-7               Secure Boot Policy, Secure boot Verification Authority</p>
+<table>
+<thead>
+<tr>
+<th><strong>PCR Index</strong></th>
+<th><strong>PCR Usage</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>SRTM, BIOS, Host Platform Extensions, Embedded Option ROMs and PI Drivers</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Host Platform Configuration</td>
+</tr>
+<tr>
+<td>2</td>
+<td>UEFI driver and application Code</td>
+</tr>
+<tr>
+<td>3</td>
+<td>UEFI driver and application Configuration and Data</td>
+</tr>
+<tr>
+<td>4</td>
+<td>UEFI Boot Manager Code (usually the MBR) and Boot Attempts</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Boot Manager Code Configuration and Data (for use by the Boot Manager Code) and GPT/Partition Table</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Host Platform Manufacturer Specific</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Secure Boot Policy, Secure boot Verification Authority</td>
+</tr>
+</tbody>
+</table>
 <p>The following figure shows the high-level components and measurements.</p>
 <h6 id="figure-2-high-level-components-and-measurements">Figure 2 High level components and measurements</h6>
 <p><img src="media/image2.png" alt=""></p>
@@ -1953,7 +1985,7 @@ storage.</p>
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 10:33:23]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 11:10:23]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -1982,7 +2014,7 @@ storage.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TCG Trusted Boot Chain in EDK II","level":"1.6","depth":1,"next":{"title":"Other Trusted Boot Chains","level":"1.7","depth":1,"path":"4_Other_Trusted_Boot_Chains.md","ref":"4_Other_Trusted_Boot_Chains.md","articles":[]},"previous":{"title":"Overview","level":"1.5","depth":1,"path":"2_Overview.md","ref":"2_Overview.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","mtime":"2020-12-07T22:32:45.639Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T22:33:23.165Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TCG Trusted Boot Chain in EDK II","level":"1.6","depth":1,"next":{"title":"Other Trusted Boot Chains","level":"1.7","depth":1,"path":"4_Other_Trusted_Boot_Chains.md","ref":"4_Other_Trusted_Boot_Chains.md","articles":[]},"previous":{"title":"Overview","level":"1.5","depth":1,"path":"2_Overview.md","ref":"2_Overview.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","mtime":"2020-12-07T23:09:50.489Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T23:10:23.476Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
