@@ -270,7 +270,7 @@
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 10:10:24]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 10:33:23]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -328,8 +328,8 @@ on the platform. One example is the OCP Project
 <a href="https://github.com/opencomputeproject/Project_Olympus/blob/master/Project_Cerberus" target="_blank">Cerberus</a>.
 The platform RoT may also collect measurements from the devices and
 support remote attestation. Figure 14 shows the concept of platform RoT.</p>
-<p><img src="media/image14.png" alt=""></p>
 <h6 id="figure-14-platform-root-of-trust">Figure 14 Platform Root of Trust</h6>
+<p><img src="media/image14.png" alt=""></p>
 <h2 id="device-root-of-trust---dice">Device Root of Trust - DICE</h2>
 <p>A device root of trust (RoT) is the RoT for a specific device to verify
 the mutable firmware and report the measurement. TCG defines the Device
@@ -343,11 +343,11 @@ a DICE certificate as the identity for the device. Figure 16 shows the
 DICE symmetric attestation architecture, which may be used in a resource
 constrain environment. For more detail, please refer to <a href="https://trustedcomputinggroup.org/work-groups/dice-architectures/" target="_blank">TCG DICE
 architecture</a>.</p>
-<p><img src="media/image15.png" alt=""></p>
 <h6 id="figure-15-dice-implicit-identity-based-attestation">Figure 15 DICE implicit identity based attestation</h6>
+<p><img src="media/image15.png" alt=""></p>
 <p>(source: <a href="https://trustedcomputinggroup.org/resource/implicit-identity-based-device-attestation/" target="_blank">DICE Identity</a>)</p>
-<p><img src="media/image16.png" alt=""></p>
 <h6 id="figure-16-dice-symmetric-identity-based-attestation">Figure 16 DICE symmetric identity based attestation</h6>
+<p><img src="media/image16.png" alt=""></p>
 <p>(source: <a href="https://trustedcomputinggroup.org/resource/symmetric-identity-based-device-attestation/" target="_blank">DICE symmetric Identity</a>)</p>
 <h2 id="server-management-domain-firmware">Server Management Domain Firmware</h2>
 <p>A server management domain (such as Baseboard Management Controller,
@@ -384,7 +384,7 @@ Security (TLS) protocol, but it is customized for the communication
 between two device entities.</p>
 <p>SPDM 1.0 defines messages for hardware and firmware identification and
 authentication, including messages for hardware and firmware measurement
-collection and attestation. See Figure 4-3A. SPDM 1.1 defines a secure
+collection and attestation. See Figure 17. SPDM 1.1 defines a secure
 session establishment mechanism between two entities by using Diffie
 Hellman ephemeral (DHE) or Elliptic Curve DHE (ECDHE) key exchange with
 asymmetric authentication such as RSA or Elliptic Curve Digital
@@ -392,27 +392,27 @@ Signature Algorithm (ECDSA). For a device that only supports symmetric
 cryptography, the secure session can also be established with a
 pre-shared key (PSK). Once the session is created, two entities can use
 Authentication Encryption and Associated Data (AEAD) for message
-communication. See Figure 4-3B. For more detail, please refer to <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0274_1.1.0.pdf" target="_blank">DMTF
+communication. See Figure 18. For more detail, please refer to <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0274_1.1.0.pdf" target="_blank">DMTF
 SPDM
 Specification</a>.</p>
-<p><img src="media/image17.png" alt=""></p>
 <h6 id="figure-17-spdm-10">Figure 17 SPDM 1.0</h6>
+<p><img src="media/image17.png" alt=""></p>
 <p>(source:<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0274_1.1.0.pdf" target="_blank">SPDM</a>)</p>
-<p><img src="media/image18.png" alt=""></p>
 <h6 id="figure-18-spdm-11">Figure 18 SPDM 1.1</h6>
+<p><img src="media/image18.png" alt=""></p>
 <p>(source: <a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0274_1.1.0.pdf" target="_blank">SPDM</a>)</p>
 <p>Currently <a href="https://github.com/jyao1/openspdm" target="_blank">openspdm</a> project provides
 an open source tool to validate the SPDM implementation and some sample
 code for explaining the SPDM concept. Figure 4-4 shows the openspdm
 internal design.</p>
-<p><img src="media/image19.png" alt=""></p>
 <h6 id="figure-19-openspdm-design">Figure 19 Openspdm Design</h6>
+<p><img src="media/image19.png" alt=""></p>
 <p>(Source: <a href="https://github.com/jyao1/openspdm/blob/master/Doc/Design.md" target="_blank">openspdmdoc</a>)</p>
 <h2 id="an-open-trusted-platform----putting-it-all-together">An Open Trusted Platform -- Putting it all together</h2>
 <p>To put all of the above technology together, Figure 4-5 shows an example
 of an open trusted platform.</p>
-<p><img src="media/image20.png" alt=""></p>
 <h6 id="figure-20-an-open-trusted-platform">Figure 20 An Open Trusted Platform</h6>
+<p><img src="media/image20.png" alt=""></p>
 
                                 
                                 </section>
@@ -427,7 +427,7 @@ of an open trusted platform.</p>
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 10:10:24]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 10:33:23]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -456,7 +456,7 @@ of an open trusted platform.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Looking Forward","level":"1.8","depth":1,"next":{"title":"Checklist for Platform Developers","level":"1.9","depth":1,"path":"6_Checklist_for_Platform_Developers.md","ref":"6_Checklist_for_Platform_Developers.md","articles":[]},"previous":{"title":"Other Trusted Boot Chains","level":"1.7","depth":1,"path":"4_Other_Trusted_Boot_Chains.md","ref":"4_Other_Trusted_Boot_Chains.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"5_Looking_Forward.md","mtime":"2020-12-07T22:09:50.828Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T22:10:24.175Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Looking Forward","level":"1.8","depth":1,"next":{"title":"Checklist for Platform Developers","level":"1.9","depth":1,"path":"6_Checklist_for_Platform_Developers.md","ref":"6_Checklist_for_Platform_Developers.md","articles":[]},"previous":{"title":"Other Trusted Boot Chains","level":"1.7","depth":1,"path":"4_Other_Trusted_Boot_Chains.md","ref":"4_Other_Trusted_Boot_Chains.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"5_Looking_Forward.md","mtime":"2020-12-07T22:32:45.639Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T22:33:23.165Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
