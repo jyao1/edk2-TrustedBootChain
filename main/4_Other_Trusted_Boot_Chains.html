@@ -270,7 +270,7 @@
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 11:33:17]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 11:41:22]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -323,16 +323,48 @@ include the trusted boot chain.</p>
 It is a simplified version. Table 3 shows the usage in coreboot.</p>
 <h6 id="table-3-coreboot-tpm-pcr-usage">Table 3 Coreboot TPM PCR Usage</h6>
 <p>(Source: <a href="https://doc.coreboot.org/security/vboot/measured_boot.html" target="_blank">coreboot measured boot</a>)</p>
-<p><strong>PCR Index</strong>   <strong>PCR Usage</strong></p>
-<hr>
-<p>0               Google vboot GBB flags
-1               Google vboot GBB HWID
-2               Core Root of Trust for Measurement (CRTM)
-3               Runtime data like hwinfo.hex or MRC cache.
-4               N/A
-5               N/A
-6               N/A
-7               N/A</p>
+<table>
+<thead>
+<tr>
+<th><strong>PCR Index</strong></th>
+<th><strong>PCR Usage</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Google vboot GBB flags</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Google vboot GBB HWID</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Core Root of Trust for Measurement (CRTM)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Runtime data like hwinfo.hex or MRC cache.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>5</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>6</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>7</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
 <p><a href="https://github.com/coreboot/vboot" target="_blank">vboot</a><a href="https://github.com/coreboot/vboot/blob/master/firmware/2lib/include/2api.h" target="_blank">2api.h</a>
 defines two PCRs:</p>
 <ul>
@@ -517,7 +549,7 @@ PCR usage in Windows BitLocker.</p>
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 11:33:17]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 11:41:22]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -546,7 +578,7 @@ PCR usage in Windows BitLocker.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Other Trusted Boot Chains","level":"1.7","depth":1,"next":{"title":"Looking Forward","level":"1.8","depth":1,"path":"5_Looking_Forward.md","ref":"5_Looking_Forward.md","articles":[]},"previous":{"title":"TCG Trusted Boot Chain in EDK II","level":"1.6","depth":1,"path":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","ref":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"4_Other_Trusted_Boot_Chains.md","mtime":"2020-12-07T23:32:44.670Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T23:33:17.890Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Other Trusted Boot Chains","level":"1.7","depth":1,"next":{"title":"Looking Forward","level":"1.8","depth":1,"path":"5_Looking_Forward.md","ref":"5_Looking_Forward.md","articles":[]},"previous":{"title":"TCG Trusted Boot Chain in EDK II","level":"1.6","depth":1,"path":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","ref":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"4_Other_Trusted_Boot_Chains.md","mtime":"2020-12-07T23:40:50.547Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T23:41:22.634Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
