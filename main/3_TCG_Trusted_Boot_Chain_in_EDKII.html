@@ -270,7 +270,7 @@
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 06:05:14]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 06:58:53]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -341,8 +341,8 @@ debug usage. PCR [23] is for application support. PCRs [17-22]
 represent the platform&apos;s dynamic root of trust for measurement (DRTM).
 In this document we will focus on the usage of PCRs [0-7], as
 described in the following table.</p>
-<p>Table 1: TPM PCR Usage (Source: <a href="https://trustedcomputinggroup.org/resource/pc-client-specific-platform-firmware-profile-specification/" target="_blank">TCG PFP
-Specification</a>)</p>
+<h6 id="table-1-tpm-pcr-usage"># Table 1 TPM PCR Usage</h6>
+<p>(Source: <a href="https://trustedcomputinggroup.org/resource/pc-client-specific-platform-firmware-profile-specification/" target="_blank">TCG PFP Specification</a>)</p>
 <p>  <strong>PCR Index</strong>   <strong>PCR Usage</strong></p>
 <hr>
 <p>  0               SRTM, BIOS, Host Platform Extensions, Embedded Option ROMs and PI Drivers
@@ -354,10 +354,9 @@ Specification</a>)</p>
   6               Host Platform Manufacturer Specific
   7               Secure Boot Policy, Secure boot Verification Authority</p>
 <p>The following figure shows the high-level components and measurements.</p>
-<p><img src="media/image2.png" alt="">{width=&quot;6.492361111111111in&quot;
-height=&quot;4.098611111111111in&quot;}</p>
-<p><em>Figure 2 -- High-level components and measurements\
-(See Building Secure Firmware by Jiewen Yao &amp; Vincent Zimmer)</em></p>
+<p><img src="media/image2.png" alt=""></p>
+<h6 id="figure-2-high-level-components-and-measurements">Figure 2 High level components and measurements</h6>
+<p>(See Building Secure Firmware by Jiewen Yao &amp; Vincent Zimmer)</p>
 <p>There is an easy way to remember Table 1, as described by the following
 two rules:</p>
 <p>1)  Even-numbered PCRs are for the code, while odd-numbered PCRs are for
@@ -366,7 +365,7 @@ two rules:</p>
     usage, PCRs [4-5] are for OS boot, PCR[7] is for secure boot
     policy, PCR[6] is undefined by the PFP spec and is
     platform-specific.</p>
-<p>Table 2. PCR usage (simple rules)</p>
+<h6 id="table-2-pcr-usage-simple-rules"># Table 2 PCR usage (simple rules)</h6>
 <pre><code>                   Code       Data Configuration
 </code></pre><hr>
 <p>  OEM                  PCR[0]   PCR[1]
@@ -502,9 +501,8 @@ library handles the PE image measurements and GPT measurement. All event
 type definition can be found at
 <a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Include/IndustryStandard/UefiTcgPlatform.h" target="_blank">UefiTcgPlatform.h</a>.
 Figure 3 below shows the high level flow of the modules.</p>
-<p><img src="media/image3.png" alt="">{width=&quot;6.5in&quot;
-height=&quot;3.4166666666666665in&quot;}</p>
-<p>Figure 3: TCG Trusted Boot Flow</p>
+<p><img src="media/image3.png" alt=""></p>
+<h6 id="figure-3-tcg-trusted-boot-flow">Figure 3 TCG Trusted Boot Flow</h6>
 <h3 id="pcr-0">PCR 0</h3>
 <p>The SRTM&apos;s version identifier is measured by the
 <a href="https://github.com/tianocore/edk2/blob/master/SecurityPkg/Tcg/Tcg2Pei/Tcg2Pei.c" target="_blank">Tcg2Pei.c</a>
@@ -991,9 +989,8 @@ the secure boot policy and authority shall also be reported in PCR[7].</p>
 <h3 id="trusted-boot-chain----putting-it-all-together">Trusted Boot Chain -- Putting it all together</h3>
 <p>Figure 4 shows a complete trusted boot chain that commences from a
 hardware root of trust module.</p>
-<p><img src="media/image4.png" alt="">{width=&quot;6.196969597550306in&quot;
-height=&quot;2.22455271216098in&quot;}</p>
-<p>Figure 4: TCG Trusted Boot Flow</p>
+<p><img src="media/image4.png" alt=""></p>
+<h6 id="figure-4-tcg-trusted-boot-flow">Figure 4 TCG Trusted Boot Flow</h6>
 <p>For test purposes, we have a UEFI shell tool
 <a href="https://github.com/jyao1/EdkiiShellTool/tree/master/EdkiiShellToolPkg/Tcg2DumpLog" target="_blank">Tcg2DumpLog</a>
 to display the TCG event log. Because the event log records every step
@@ -1047,24 +1044,19 @@ current PCR values that are signed by the TPM.</p>
 <p>4)  The client platform sends the event log directly to the server.</p>
 <p>5)  The server replays the event log to reproduce the PCR values. If
     they are same, then the server knows the TCG event log is genuine.</p>
-<p><img src="media/image5.jpeg" alt="">{width=&quot;6.391025809273841in&quot;
-height=&quot;4.260684601924759in&quot;}</p>
-<p>Figure 5: Remote Attestation -- TPM Device Verification (Source:
-<a href="https://developer.ibm.com/articles/trusted-boot-openpower/" target="_blank">OpenPower
-TrustBoot</a>)</p>
-<p><img src="media/image6.jpeg" alt="">{width=&quot;6.514963910761155in&quot;
-height=&quot;3.8846161417322835in&quot;}</p>
-<p>Figure 6: Remote Attestation -- Event Log Verification (Source:
-<a href="https://developer.ibm.com/articles/trusted-boot-openpower/" target="_blank">OpenPower
-TrustBoot</a>)</p>
+<p><img src="media/image5.jpeg" alt=""></p>
+<h6 id="figure-5-remote-attestation-tpm-device-verification">Figure 5 Remote Attestation TPM Device Verification</h6>
+<p>(Source: <a href="https://developer.ibm.com/articles/trusted-boot-openpower/" target="_blank">OpenPower TrustBoot</a>)</p>
+<p><img src="media/image6.jpeg" alt=""></p>
+<h6 id="figure-6-remote-attestation-event-log-verification">Figure 6 Remote Attestation Event Log Verification</h6>
+<p>(Source: <a href="https://developer.ibm.com/articles/trusted-boot-openpower/" target="_blank">OpenPower TrustBoot</a>)</p>
 <p>Once the verifier in the server gets the event log, the verifier can
 compare it with the reference integrity measurement (RIM) based upon a
 predefine policy.</p>
 <p>Figure 7 shows the final RIM validation process.</p>
-<p><img src="media/image7.png" alt="">{width=&quot;6.5in&quot;
-height=&quot;3.1104166666666666in&quot;}</p>
-<p>Figure 7. RIM Validation (source: <a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG_PC_Client_FIM_v1_r40_02dec2020.pdf" target="_blank">TCG
-FIM</a>)</p>
+<p><img src="media/image7.png" alt=""></p>
+<h6 id="figure-7-rim-validation">Figure 7 RIM Validation</h6>
+<p>(source: <a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG_PC_Client_FIM_v1_r40_02dec2020.pdf" target="_blank">TCG FIM</a>)</p>
 <p>For test purposes, we created a sample
 <a href="https://github.com/jyao1/FSP/tree/FspAttestation/Tools/ManifestTools" target="_blank">FspManifestTool</a>.
 It can be used to generate a
@@ -1217,9 +1209,8 @@ and calls
 <a href="https://github.com/tianocore/edk2/blob/master/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2Ptp.c" target="_blank">Tpm2Ptp.c</a>
 <strong>PtpCrbTpmCommand</strong>() for the CRB interface.</p>
 <p>Figure 8 shows the TCG trusted boot component in EDK II.</p>
-<p><img src="media/image8.png" alt="">{width=&quot;6.492361111111111in&quot;
-height=&quot;4.666666666666667in&quot;}</p>
-<p>Figure 8: TCG Trusted Boot Component in EDK II</p>
+<p><img src="media/image8.png" alt=""></p>
+<h6 id="figure-8-tcg-trusted-boot-component-in-edk-ii">Figure 8 TCG Trusted Boot Component in EDK II</h6>
 <h3 id="error-handling">Error Handling</h3>
 <p>TPM errors may happen at any time. According to the TCG specification,
 capping PCR is always required. If the PCR cannot be capped, the
@@ -1446,9 +1437,8 @@ registered hash algorithms value is a subset of
 and is recorded in
 <a href="https://github.com/tianocore/edk2/blob/master/SecurityPkg/SecurityPkg.dec" target="_blank">PcdTcg2HashAlgorithmBitmap</a>.</p>
 <p>Figure 9 shows the TPM bank selection in EDK II.</p>
-<p><img src="media/image9.png" alt="">{width=&quot;6.492361111111111in&quot;
-height=&quot;3.7805555555555554in&quot;}</p>
-<p>Figure 9: TPM Bank Selection in EDK II</p>
+<p><img src="media/image9.png" alt=""></p>
+<h6 id="figure-9-tpm-bank-selection-in-edk-ii">Figure 9 TPM Bank Selection in EDK II</h6>
 <p>In brief, we have below result:</p>
 <ul>
 <li><p><a href="https://github.com/tianocore/edk2/blob/master/SecurityPkg/SecurityPkg.dec" target="_blank">PcdTpm2HashMask</a>
@@ -1553,9 +1543,8 @@ defines
 <a href="https://github.com/tianocore/edk2/blob/master/SecurityPkg/Include/Library/Tcg2PpVendorLib.h" target="_blank">Tcg2PpVendorLib</a>
 to serve that purpose.</p>
 <p>Figure 10 shows TCG PP component in EDK II.</p>
-<p><img src="media/image10.png" alt="">{width=&quot;6.5in&quot;
-height=&quot;4.530555555555556in&quot;}</p>
-<p>Figure 10: TCG PP Component in EDK II</p>
+<p><img src="media/image10.png" alt=""></p>
+<h6 id="figure-10-tcg-pp-component-in-edk-ii">Figure 10 TCG PP Component in EDK II</h6>
 <h2 id="tcg-memory-overwrite-mor">TCG Memory Overwrite (MOR)</h2>
 <p>The memory overwrite (MOR) feature is to mitigate the platform reset
 attack. It is not related to the TPM hardware but is a pure software
@@ -1624,18 +1613,16 @@ driver
 to handle both secure MOR version 1 (lock without key) and version 2
 (lock with key).</p>
 <p>Figure 11 shows the high level TCG MOR Flow.</p>
-<p><img src="media/image11.png" alt="">{width=&quot;6.492361111111111in&quot;
-height=&quot;2.3027777777777776in&quot;}</p>
-<p>Figure 11 TCG MOR Flow</p>
+<p><img src="media/image11.png" alt=""></p>
+<h6 id="figure-11-tcg-mor-flow">Figure 11 TCG MOR Flow</h6>
 <p>The MOR variable not only control memory overwrite but also control the
 storage device TPer reset. We will discuss that in TCG storage section.</p>
 <p>Previous MOR specifications also defined an ACPI interface. The OS may
 set MOR state by using an ACPI _DSM method. This interface is
 deprecated because it does not support secure MOR.</p>
 <p>Figure 12 shows TCG MOR component in EDK II.</p>
-<p><img src="media/image12.png" alt="">{width=&quot;6.5in&quot;
-height=&quot;4.030555555555556in&quot;}</p>
-<p>Figure 12 TCG MOR Component in EDK II</p>
+<p><img src="media/image12.png" alt=""></p>
+<h6 id="figure-12-tcg-mor-component-in-edk-ii">Figure 12 TCG MOR Component in EDK II</h6>
 <h2 id="os-interface">OS Interface</h2>
 <p>A platform firmware shall report the TPM device to an OS. The report
 should include 1) ACPI table, 2) EFI_TCG2_PROTOCOL.</p>
@@ -1908,8 +1895,8 @@ admin password and MSID are required here.</p>
 Erase or Revert action. To give a better user experience, the OPAL
 driver pops up a message to notify the user of this potential delay.</p>
 <p>Figure 13 shows TCG storage component in EDK II.</p>
-<p><img src="media/image13.png" alt="">{width=&quot;6.5in&quot;
-height=&quot;4.166666666666667in&quot;} Figure 13 TCG Storage Component in EDK II</p>
+<p><img src="media/image13.png" alt=""></p>
+<h6 id="figure-13-tcg-storage-component-in-edk-ii">Figure 13 TCG Storage Component in EDK II</h6>
 <h3 id="blocksid">BlockSid</h3>
 <p>Even if an OPAL device supports locking, an end user may choose to not
 lock it. In this case, a malicious entity may set a password to lock the
@@ -1967,7 +1954,7 @@ storage.</p>
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 06:05:14]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 06:58:53]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -1996,7 +1983,7 @@ storage.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TCG Trusted Boot Chain in EDK II","level":"1.6","depth":1,"next":{"title":"Other Trusted Boot Chains","level":"1.7","depth":1,"path":"4_Other_Trusted_Boot_Chains.md","ref":"4_Other_Trusted_Boot_Chains.md","articles":[]},"previous":{"title":"Overview","level":"1.5","depth":1,"path":"2_Overview.md","ref":"2_Overview.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","mtime":"2020-12-07T18:04:44.688Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T18:05:14.964Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TCG Trusted Boot Chain in EDK II","level":"1.6","depth":1,"next":{"title":"Other Trusted Boot Chains","level":"1.7","depth":1,"path":"4_Other_Trusted_Boot_Chains.md","ref":"4_Other_Trusted_Boot_Chains.md","articles":[]},"previous":{"title":"Overview","level":"1.5","depth":1,"path":"2_Overview.md","ref":"2_Overview.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","mtime":"2020-12-07T18:58:24.680Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T18:58:53.298Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

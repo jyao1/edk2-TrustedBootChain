@@ -270,7 +270,7 @@
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 06:05:14]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 06:58:53]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -320,9 +320,9 @@
 include the trusted boot chain.</p>
 <h2 id="coreboot">coreboot</h2>
 <p><a href="https://github.com/coreboot" target="_blank">coreboot</a> includes the measured boot flow.
-It is a simplified version. Table 4 shows the usage in coreboot.</p>
-<p>Table 4: coreboot TPM PCR Usage (Source: <a href="https://doc.coreboot.org/security/vboot/measured_boot.html" target="_blank">coreboot measured
-boot</a>)</p>
+It is a simplified version. Table 3 shows the usage in coreboot.</p>
+<h6 id="table-3-coreboot-tpm-pcr-usage"># Table 3 Coreboot TPM PCR Usage</h6>
+<p>(Source: <a href="https://doc.coreboot.org/security/vboot/measured_boot.html" target="_blank">coreboot measured boot</a>)</p>
 <p>  <strong>PCR Index</strong>   <strong>PCR Usage</strong></p>
 <hr>
 <p>  0               Google vboot GBB flags
@@ -393,9 +393,9 @@ For example:</p>
 <strong>tcpa_log_add_table_entry</strong>() appends the log to a tcpa table.</p>
 <h2 id="grub2">Grub2</h2>
 <p><a href="https://github.com/rhboot/grub2" target="_blank">Grub2</a> extends the trusted boot chain
-from platform firmware into the OS. Table 5 shows the PCR usage in Grub.</p>
-<p>Table 5: GRUB TPM PCR Usage (Source: <a href="https://www.gnu.org/software/grub/manual/grub/html_node/Measured-Boot.html" target="_blank">Grub2 Measured
-Boot</a>)</p>
+from platform firmware into the OS. Table 4 shows the PCR usage in Grub.</p>
+<h6 id="table-4-grub-tpm-pcr-usage"># Table 4 GRUB TPM PCR Usage</h6>
+<p>(Source: <a href="https://www.gnu.org/software/grub/manual/grub/html_node/Measured-Boot.html" target="_blank">Grub2 Measured Boot</a>)</p>
 <p>+---------------+-----------------------------------------------------+
 | <strong>PCR Index</strong> | <strong>PCR Usage</strong>                                       |
 +---------------+-----------------------------------------------------+
@@ -453,8 +453,8 @@ Whenever grub uses
 <strong>grub_tpm_verify_write</strong>() measures the file binary to PCR9.</p>
 <h2 id="linux-secure-boot-shim">Linux Secure Boot Shim</h2>
 <p><a href="https://github.com/rhboot/shim" target="_blank">Shim</a> is used to extend the UEFI secure
-boot concept to Linux. Table 6 shows the PCR usage in Shim.</p>
-<p>Table 6: Shim TPM PCR Usage</p>
+boot concept to Linux. Table 5 shows the PCR usage in Shim.</p>
+<h6 id="table-5-shim-tpm-pcr-usage"># Table 5 Shim TPM PCR Usage</h6>
 <p>+---------------+-----------------------------------------------------+
 | <strong>PCR Index</strong> | <strong>PCR Usage</strong>                                       |
 +===============+=====================================================+
@@ -490,10 +490,10 @@ Also <strong>check_db_cert</strong>()/<strong>check_db_hash</strong>() will reco
 <h2 id="windows-bitlocker">Windows BitLocker</h2>
 <p>Microsoft Windows BitLocker uses the below-listed PCRs. The legacy-boot
 version of Windows used PCR[8, 9, 10, 11], while UEFI-based Windows
-uses PCR[11, 12, 13, 14] for the BitLocker policies. Table 7 shows the
+uses PCR[11, 12, 13, 14] for the BitLocker policies. Table 6 shows the
 PCR usage in Windows BitLocker.</p>
-<p>Table 7: Windows BitLocker PCR Usage (Source: <a href="https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings" target="_blank">Windows
-BitLocker</a>)</p>
+<h6 id="table-6-windows-bitlocker-pcr-usage"># Table 6 Windows BitLocker PCR Usage</h6>
+<p>(Source: <a href="https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings" target="_blank">Windows BitLocker</a>)</p>
 <hr>
 <p>  <strong>PCR Index</strong>   <strong>PCR Usage (Legacy)</strong>     <strong>PCR Usage (UEFI)</strong>
   8               NTFS Boot Sector           Reserved
@@ -518,7 +518,7 @@ BitLocker</a>)</p>
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 06:05:14]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 06:58:53]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -547,7 +547,7 @@ BitLocker</a>)</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Other Trusted Boot Chains","level":"1.7","depth":1,"next":{"title":"Looking Forward","level":"1.8","depth":1,"path":"5_Looking_Forward.md","ref":"5_Looking_Forward.md","articles":[]},"previous":{"title":"TCG Trusted Boot Chain in EDK II","level":"1.6","depth":1,"path":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","ref":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"4_Other_Trusted_Boot_Chains.md","mtime":"2020-12-07T18:04:44.688Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T18:05:14.964Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Other Trusted Boot Chains","level":"1.7","depth":1,"next":{"title":"Looking Forward","level":"1.8","depth":1,"path":"5_Looking_Forward.md","ref":"5_Looking_Forward.md","articles":[]},"previous":{"title":"TCG Trusted Boot Chain in EDK II","level":"1.6","depth":1,"path":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","ref":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"4_Other_Trusted_Boot_Chains.md","mtime":"2020-12-07T18:58:24.680Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T18:58:53.298Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
