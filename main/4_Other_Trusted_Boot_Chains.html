@@ -270,7 +270,7 @@
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 11:57:04]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/08/2020 12:10:06]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -430,25 +430,25 @@ from platform firmware into the OS. Table 4 shows the PCR usage in Grub.</p>
 <p>+---------------+-----------------------------------------------------+
 | <strong>PCR Index</strong> | <strong>PCR Usage</strong>                                       |
 +---------------+-----------------------------------------------------+
-| 8             | Grub command line:                                  |
+| 8             | Grub command line\:                                 |
 |               |                                                     |
 |               | All executed commands (including those from         |
 |               | configuration files) will be logged and measured as |
 |               | entered with a prefix of grub_cmd\:                |
 +---------------+-----------------------------------------------------+
-| 8             | Kernel command line:                                |
+| 8             | Kernel command line\:                               |
 |               |                                                     |
 |               | Any command line passed to a kernel will be logged  |
 |               | and measured as entered with a prefix of            |
 |               | kernel_cmdline\:                                   |
 +---------------+-----------------------------------------------------+
-| 8             | Module command line:                                |
+| 8             | Module command line\:                               |
 |               |                                                     |
 |               | Any command line passed to a kernel module will be  |
 |               | logged and measured as entered with a prefix of     |
 |               | module_cmdline\:                                   |
 +---------------+-----------------------------------------------------+
-| 9             | Files:                                              |
+| 9             | Files\:                                             |
 |               |                                                     |
 |               | Any file read by GRUB will be logged and measured   |
 |               | with a descriptive text corresponding to the        |
@@ -549,7 +549,7 @@ PCR usage in Windows BitLocker.</p>
     
       <h2>
         <div style="position:absolute;text-align:left">Understanding the Trusted Boot Chain Implementation</div>
-        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/07/2020 11:57:04]</div>
+        <div style="position:absolute;width:100%;text-align:center">DRAFT [12/08/2020 12:10:06]</div>
         <div style="text-align:right">Revision 1.0</div>
       </h2>  
     
@@ -578,7 +578,7 @@ PCR usage in Windows BitLocker.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Other Trusted Boot Chains","level":"1.7","depth":1,"next":{"title":"Looking Forward","level":"1.8","depth":1,"path":"5_Looking_Forward.md","ref":"5_Looking_Forward.md","articles":[]},"previous":{"title":"TCG Trusted Boot Chain in EDK II","level":"1.6","depth":1,"path":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","ref":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"4_Other_Trusted_Boot_Chains.md","mtime":"2020-12-07T23:56:23.749Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T23:57:04.828Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Other Trusted Boot Chains","level":"1.7","depth":1,"next":{"title":"Looking Forward","level":"1.8","depth":1,"path":"5_Looking_Forward.md","ref":"5_Looking_Forward.md","articles":[]},"previous":{"title":"TCG Trusted Boot Chain in EDK II","level":"1.6","depth":1,"path":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","ref":"3_TCG_Trusted_Boot_Chain_in_EDKII.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"draft":"yes","title":"Understanding the Trusted Boot Chain Implementation","version":"Revision 1.0"},"plugins":["puml-aleung"],"pluginsConfig":{"puml-aleung":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"4_Other_Trusted_Boot_Chains.md","mtime":"2020-12-08T00:09:30.841Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-08T00:10:06.784Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
